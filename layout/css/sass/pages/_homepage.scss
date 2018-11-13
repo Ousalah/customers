@@ -1,0 +1,18 @@
+// Start Customers grid
+.customers-grid {
+  .customer-grid {
+    border: 1px solid #d9d7d7;
+    padding: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 100px;
+    .customer-details {
+      margin-left: 10px;
+      display: inline-block;
+      .fullname {
+        margin: 0;
+      }
+    }
+  }
+}
+// End Customers grid
