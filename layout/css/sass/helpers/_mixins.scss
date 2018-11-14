@@ -10,6 +10,13 @@
 	height: 100%;
 }
 
+@mixin vertical-center {
+	position: relative;
+	display: block;
+	top: 50%;
+	@include prefixer(transform, translateY(-50%), webkit ms);
+}
+
 /*
 ** Prefixes Mixin
 ** Auto Add Prefixes To Properties

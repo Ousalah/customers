@@ -1,0 +1,18 @@
+// Start customize bootstrap buttons
+.btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-transparent {
+  background: transparent;
+  border: none;
+}
+
+.btn-transparent-success {
+  color: #398439;
+}

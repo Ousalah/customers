@@ -35,6 +35,24 @@
   margin-left: -5px;
 }
 
+.btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.btn:focus {
+  outline: none;
+}
+
+.btn-transparent {
+  background: transparent;
+  border: none;
+}
+
+.btn-transparent-success {
+  color: #398439;
+}
+
 /* latin-ext */
 @font-face {
   font-family: "Raleway";
@@ -53,6 +71,54 @@
 }
 body {
   font-family: "Raleway", Arial, sans-serif;
+}
+
+.main-nav {
+  overflow: hidden;
+  height: 46px;
+  line-height: 46px;
+  background-color: #4285F4;
+  color: white;
+}
+
+.main-header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+.main-header .zones {
+  height: 50px;
+  min-height: 50px;
+}
+.main-header .zones .main-breadcrumb, .main-header .zones .search, .main-header .zones button[type=submit], .main-header .zones .actions, .main-header .zones .navigations {
+  position: relative;
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.main-header .zones .search {
+  border-width: 0 0 1px;
+  box-shadow: none;
+  border-radius: 0;
+  padding-right: 25px;
+  padding-left: 0;
+}
+.main-header .zones button[type=submit] {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+}
+.main-header .zones .navigations .view-mode i {
+  padding: 5px 8px;
+  cursor: pointer;
+}
+.main-header .zones .navigations .view-mode i:first-of-type {
+  margin: -4px;
+}
+.main-header .zones .navigations .view-mode i.active, .main-header .zones .navigations .view-mode i.active:hover, .main-header .zones .navigations .view-mode i.active:focus {
+  background-color: #e5e5e5;
 }
 
 .customers-grid .customer-grid {
@@ -77,6 +143,7 @@ body {
   overflow: hidden;
   text-transform: capitalize;
   font-weight: bold;
+  font-size: 18px;
 }
 .customers-grid .customer-grid .customer-details p {
   margin: 5px 0;

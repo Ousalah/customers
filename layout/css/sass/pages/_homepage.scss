@@ -1,3 +1,53 @@
+// Start
+.main-nav {
+  overflow: hidden;
+  height: 46px;
+  line-height: 46px;
+  background-color: #4285F4;
+  color: white;
+}
+// End
+// Start main Header
+.main-header {
+  border-bottom: 1px solid  #ccc;
+  margin-bottom: 15px;
+  .zones {
+    height: 50px;
+    min-height: 50px;
+    .main-breadcrumb, .search, button[type="submit"], .actions, .navigations {
+      @include vertical-center();
+    }
+    .search {
+      border-width: 0 0 1px;
+      box-shadow: none;
+      border-radius: 0;
+      padding-right: 25px;
+      padding-left: 0;
+    }
+    button[type="submit"] {
+      background: transparent;
+      border: none;
+      position: absolute;
+      right: 0;
+    }
+    .navigations {
+      .view-mode {
+        i {
+          padding: 5px 8px;
+          cursor: pointer;
+          &:first-of-type {
+            margin: -4px;
+          }
+        }
+        i.active, i.active:hover, i.active:focus {
+          background-color: #e5e5e5;
+        }
+      }
+    }
+  }
+}
+// End main Header
+
 // Start Customers grid
 .customers-grid {
   .customer-grid {
@@ -20,6 +70,7 @@
         overflow: hidden;
         text-transform: capitalize;
         font-weight: bold;
+        font-size: 18px;
       }
       p {
         margin: 5px 0;

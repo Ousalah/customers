@@ -7,33 +7,43 @@
 ?>
   <body>
     <!-- Start Header -->
-    <div class="top-nav">
+    <div class="main-nav">
       <div class="container">Logout</div>
     </div>
-    <div class="man-nav">
+    <div class="main-header">
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <div class="breadcrumb"><span>Customers</span></div>
+            <div class="zones"><span class="main-breadcrumb">Customers</span></div>
           </div>
           <div class="col-sm-6">
-            <div class="breadcrumb"><input type="search"></div>
+            <form class="zones form-horizontal" action="" method="get">
+              <input type="text" class="search form-control" placeholder="Search.." name="s">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
           </div>
           <div class="col-sm-6">
-            <div class="breadcrumb"><button class="btn btn-success">Create</button></div>
+            <div class="zones">
+              <div class="actions">
+                <button class="btn btn-success">Create</button>
+                <button class="btn btn-transparent btn-transparent-success">Import</button>
+              </div>
+            </div>
           </div>
           <div class="col-sm-6">
-            <div class="breadcrumb">
-              <span class="pull-left">
-                1-10/50
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-              </span>
-              <span class="pull-right">
-                <i class="fa fa-th-list" aria-hidden="true"></i>
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-              </span>
-              <span class="clearfix"></span>
+            <div class="zones">
+              <div class="navigations">
+                <span class="pull-left">
+                  1-10/50
+                  <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </span>
+                <span class="pull-right view-mode">
+                  <i class="fa fa-th-large grid-view active" aria-hidden="true"></i>
+                  <i class="fa fa-th-list list-view" aria-hidden="true"></i>
+                </span>
+                <span class="clearfix"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -112,6 +122,43 @@
       </div>
     </div>
     <!--  End Customers grid -->
+
+    <!--  Start customers list-->
+    <div class="customers-list">
+      <div class="container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--  End customers list-->
 
     <!--  Start -->
     <!-- <form class="" action="controller/Customers.php?t=client&a=add" method="post"> -->
