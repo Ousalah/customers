@@ -47,7 +47,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="customer-grid">
-              <div class="customer-details">
+              <div class="customer-details text-center">
                 <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
                 <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
                 <p><i class="fa fa-phone"></i> 06 62 662 660</p>
@@ -56,7 +56,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="customer-grid">
-              <div class="customer-details">
+              <div class="customer-details text-center">
                 <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
                 <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
                 <p><i class="fa fa-phone"></i> 06 62 662 660</p>
@@ -65,7 +65,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="customer-grid">
-              <div class="customer-details">
+              <div class="customer-details text-center">
                 <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
                 <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
                 <p><i class="fa fa-phone"></i> 06 62 662 660</p>
@@ -74,7 +74,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="customer-grid">
-              <div class="customer-details">
+              <div class="customer-details text-center">
                 <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
                 <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
                 <p><i class="fa fa-phone"></i> 06 62 662 660</p>
@@ -83,7 +83,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="customer-grid">
-              <div class="customer-details">
+              <div class="customer-details text-center">
                 <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
                 <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
                 <p><i class="fa fa-phone"></i> 06 62 662 660</p>
@@ -92,7 +92,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="customer-grid">
-              <div class="customer-details">
+              <div class="customer-details text-center">
                 <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
                 <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
                 <p><i class="fa fa-phone"></i> 06 62 662 660</p>
@@ -101,7 +101,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="customer-grid">
-              <div class="customer-details">
+              <div class="customer-details text-center">
                 <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
                 <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
                 <p><i class="fa fa-phone"></i> 06 62 662 660</p>
