@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php getTitle(); ?></title>
     <link rel="stylesheet" href="<?php echo $cssvendor . 'bootstrap.min.css' ?>">
+    <link rel="stylesheet" href="<?php echo $cssvendor . 'datatables.min.css' ?>">
     <link rel="stylesheet" href="<?php echo $cssvendor . 'font-awesome.min.css' ?>">
     <link rel="stylesheet" href="<?php echo $css . 'homepage.css' ?>">
 

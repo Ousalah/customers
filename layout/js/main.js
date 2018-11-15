@@ -7,4 +7,9 @@ $(function () {
       $("." + $(this).data("class")).fadeIn().siblings("._customers-view").hide();
     }
   });
+
+  $('#table-customers-list').DataTable({
+    paging: false,
+    searching: false,
+  });
 });
