@@ -152,4 +152,8 @@ body {
   overflow: hidden;
 }
 
+.customers-list {
+  display: none;
+}
+
 /*# sourceMappingURL=homepage.css.map */

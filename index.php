@@ -39,8 +39,8 @@
                   <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </span>
                 <span class="pull-right view-mode">
-                  <i class="fa fa-th-large grid-view active" aria-hidden="true"></i>
-                  <i class="fa fa-th-list list-view" aria-hidden="true"></i>
+                  <i class="fa fa-th-large grid-view active" data-class="customers-grid" aria-hidden="true"></i>
+                  <i class="fa fa-th-list list-view" data-class="customers-list" aria-hidden="true"></i>
                 </span>
                 <span class="clearfix"></span>
               </div>
@@ -52,7 +52,7 @@
     <!-- End Header -->
 
     <!--  Start Customers grid -->
-    <div class="customers-grid">
+    <div class="_customers-view customers-grid">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -124,7 +124,7 @@
     <!--  End Customers grid -->
 
     <!--  Start customers list-->
-    <div class="customers-list">
+    <div class="_customers-view customers-list">
       <div class="container">
         <table class="table table-striped">
           <thead>

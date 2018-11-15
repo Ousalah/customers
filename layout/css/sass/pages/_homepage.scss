@@ -1,4 +1,4 @@
-// Start
+// Start main nav
 .main-nav {
   overflow: hidden;
   height: 46px;
@@ -6,7 +6,7 @@
   background-color: #4285F4;
   color: white;
 }
-// End
+// End main nav
 // Start main Header
 .main-header {
   border-bottom: 1px solid  #ccc;
@@ -82,3 +82,9 @@
   }
 }
 // End Customers grid
+
+// Start customers list
+.customers-list {
+  display: none;
+}
+// End customers list
