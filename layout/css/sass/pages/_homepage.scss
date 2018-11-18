@@ -50,6 +50,7 @@
 
 // Start Customers grid
 .customers-grid {
+  display: none;
   .customer-grid {
     border: 1px solid #d9d7d7;
     padding: 10px;
@@ -85,6 +86,6 @@
 
 // Start customers list
 .customers-list {
-  display: none;
+
 }
 // End customers list

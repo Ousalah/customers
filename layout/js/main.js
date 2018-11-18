@@ -9,7 +9,10 @@ $(function () {
   });
 
   $('#table-customers-list').DataTable({
+    responsive: true,
+    fixedHeader: true,
     paging: false,
     searching: false,
+    bInfo: false
   });
 });

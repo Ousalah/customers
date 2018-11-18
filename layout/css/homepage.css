@@ -121,6 +121,9 @@ body {
   background-color: #e5e5e5;
 }
 
+.customers-grid {
+  display: none;
+}
 .customers-grid .customer-grid {
   border: 1px solid #d9d7d7;
   padding: 10px;
@@ -150,10 +153,6 @@ body {
   height: 20px;
   max-height: 20px;
   overflow: hidden;
-}
-
-.customers-list {
-  display: none;
 }
 
 /*# sourceMappingURL=homepage.css.map */
