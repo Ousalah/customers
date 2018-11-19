@@ -2,7 +2,7 @@
   session_start();
   $pageTitle = 'Petit Bateau - Clients';
 
-  include "init.php";
+  include_once "init.php";
 
 ?>
   <body>

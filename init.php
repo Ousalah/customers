@@ -1,8 +1,8 @@
 <?php
 
   // Error reporting
-  ini_set('display_errors', 'On');
-  error_reporting('E_ALL');
+  // ini_set('display_errors', 'On');
+  // error_reporting('E_ALL');
 
   // Check if Session user isset
   $sessionUser = (isset($_SESSION['user'])) ? ucwords($_SESSION['user']) : "";

@@ -1,0 +1,149 @@
+col resize:
+http://legacy.datatables.net/extras/thirdparty/ColReorderWithResize/
+
+
+
+ajax datatables:
+https://www.youtube.com/watch?v=M0cEiFAzwf0
+https://www.youtube.com/watch?v=186DFIV_IDs
+
+
+
+table client:
+USE [DONNEESLPSIEGE]
+GO
+
+/****** Object:  Table [dbo].[CLIENT]    Script Date: 11/19/2018 17:17:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[CLIENT](
+	[CODE_CLT] [varchar](7) NOT NULL,
+	[CLIENT] [varchar](50) NULL,
+	[TEL] [varchar](60) NULL,
+	[FAX] [varchar](20) NULL,
+	[ADRESSE1LIV] [varchar](50) NULL,
+	[ADRESSE2LIV] [varchar](50) NULL,
+	[ADRESSE1FACT] [varchar](50) NULL,
+	[ADRESSE2FACT] [varchar](50) NULL,
+	[VILLELIV] [varchar](20) NULL,
+	[VILLEFACT] [varchar](20) NULL,
+	[PAYS] [varchar](20) NULL,
+	[E_MAIL] [varchar](60) NULL,
+	[BLOQUER] [char](1) NULL,
+	[CPLIV] [varchar](20) NULL,
+	[CPFACT] [char](10) NULL,
+	[COMMENTAIRE] [varchar](200) NULL,
+	[ECHEANCE] [int] NULL,
+	[APARTIRDE] [varchar](20) NULL,
+	[OBJECTIF] [float] NULL,
+	[Site] [varchar](30) NULL,
+	[REF_CATEG] [int] NULL,
+	[REF_MODEPAIE] [int] NULL,
+	[Avantage] [char](1) NULL,
+	[datecreation] [datetime] NULL,
+	[codebadge] [varchar](10) NULL,
+	[solde_du] [float] NULL,
+	[plafond] [float] NULL,
+	[mobile] [varchar](20) NULL,
+	[compte_compt] [varchar](20) NULL,
+	[categorie] [nvarchar](50) NULL,
+	[nbpt] [int] NULL,
+	[nbptcadeau] [int] NULL,
+	[credit] [float] NULL,
+	[soldec] [float] NULL,
+	[CODE_COM] [varchar](10) NULL,
+	[code_cltcharge] [varchar](7) NULL,
+	[personnel] [varchar](1) NULL,
+	[Rremise] [float] NULL,
+	[Moisrem] [varchar](2) NULL,
+	[REMCAISSE] [float] NULL,
+	[soldereel] [float] NULL,
+	[plafonnee] [bit] NULL,
+	[E01] [varchar](1) NULL,
+	[sync] [int] NULL,
+	[RC] [varchar](50) NULL,
+	[ICE] [varchar](50) NULL,
+	[factimediat] [bit] NULL,
+	[ref_modepaiepremier] [int] NULL,
+	[telephone2] [varchar](60) NULL,
+	[code_soc] [int] NULL,
+	[solde] [real] NULL,
+	[remise] [float] NULL,
+	[tauxsub] [float] NULL,
+ CONSTRAINT [PK__CLIENTS__76CBA758] PRIMARY KEY CLUSTERED
+(
+	[CODE_CLT] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  CONSTRAINT [DF_CLIENT_BLOQUER]  DEFAULT ('N') FOR [BLOQUER]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  CONSTRAINT [DF_CLIENT_REF_MODEPAIE]  DEFAULT (0) FOR [REF_MODEPAIE]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  CONSTRAINT [DF_CLIENT_Avantage]  DEFAULT ('1') FOR [Avantage]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT (0) FOR [nbptcadeau]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  CONSTRAINT [DF_CLIENT_credit]  DEFAULT (0) FOR [credit]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ('N') FOR [personnel]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [Rremise]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [REMCAISSE]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [soldereel]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [plafonnee]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ('C') FOR [E01]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [sync]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [factimediat]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [code_soc]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [solde]
+GO
+
+ALTER TABLE [dbo].[CLIENT] ADD  DEFAULT ((0)) FOR [tauxsub]
+GO
+
+
+
+
+show columns in sql server:
+public static function showColumns(){
+  $cnx = Utils::connecter_db();
+  $pr = $cnx->prepare("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'CLIENT' ");
+  $pr->execute();
+  return $pr->fetchAll(PDO::FETCH_OBJ);
+
+}

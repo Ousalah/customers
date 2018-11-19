@@ -186,7 +186,7 @@ class Utils
 	** @param $fetch                = type of fetch (optional) (default = "fetchAll") {options = "fetchAll", "fetch"}
 	** @return records
 	*/
-	public static function getFrom($params = array(
+	public static function get($params = array(
 		"fields"      => array(),
 		"table"       => '',
 		"joins"       => array(array("type" => "INNER", "table" => "", "primary" => "", "foreign" => "")),
@@ -286,8 +286,7 @@ class Utils
 			}
 			// End order by part
 
-			global $con;
-			$stmt = $con->prepare("SELECT {$params['fields']} FROM {$params['table']} {$joins} {$where} {$params['orderBy']} {$params['orderType']} {$params['limit']}");
+			$stmt = $cnx->prepare("SELECT {$params['fields']} FROM {$params['table']} {$joins} {$where} {$params['orderBy']} {$params['orderType']} {$params['limit']}");
 			$stmt->execute($values);
 			if ($fetch === "fetch") { return $stmt->fetch(); }
 			elseif ($fetch === "fetchColumn") { return $stmt->fetchColumn(); }
