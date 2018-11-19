@@ -13,6 +13,10 @@ $(function () {
     fixedHeader: true,
     paging: false,
     searching: false,
-    bInfo: false
+    info: false,
+    columnDefs: [
+      { responsivePriority: 1, targets: 0 },
+      { responsivePriority: 2, targets: -1 }
+    ]
   });
 });

@@ -155,4 +155,9 @@ body {
   overflow: hidden;
 }
 
+.customers-list .dataTable td,
+.customers-list .dataTable th {
+  white-space: nowrap;
+}
+
 /*# sourceMappingURL=homepage.css.map */

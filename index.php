@@ -128,7 +128,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <table id="table-customers-list" class="table table-striped table-hover" style="width:100%">
+            <table id="table-customers-list" class="table table-striped" style="width:100%">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -148,7 +148,7 @@
                   <th>Office</th>
                   <th>Age</th>
                   <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -170,7 +170,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Tiger Nixon</td>
@@ -190,7 +194,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Tiger Nixon</td>
@@ -210,7 +218,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Tiger Nixon</td>
@@ -230,7 +242,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Tiger Nixon</td>
@@ -250,7 +266,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Tiger Nixon</td>
@@ -270,7 +290,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Tiger Nixon</td>
@@ -290,7 +314,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Tiger Nixon</td>
@@ -310,7 +338,11 @@
                   <td>Edinburgh</td>
                   <td>61</td>
                   <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Garrett Winters</td>
@@ -330,7 +362,11 @@
                   <td>Tokyo</td>
                   <td>63</td>
                   <td>2011/07/25</td>
-                  <td>$170,750</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Ashton Cox</td>
@@ -350,31 +386,13 @@
                   <td>Tokyo</td>
                   <td>63</td>
                   <td>2011/07/25</td>
-                  <td>$170,750</td>
+                  <td>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                  </td>
                 </tr>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

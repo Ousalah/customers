@@ -86,6 +86,9 @@
 
 // Start customers list
 .customers-list {
-
+  .dataTable td,
+  .dataTable th {
+    white-space: nowrap;
+  }
 }
 // End customers list
