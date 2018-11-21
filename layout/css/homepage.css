@@ -135,10 +135,6 @@ body {
 .customers-grid .customer-grid:hover {
   border-width: 3px;
 }
-.customers-grid .customer-grid .customer-details {
-  margin-left: 10px;
-  display: inline-block;
-}
 .customers-grid .customer-grid .customer-details .fullname {
   margin: 0;
   height: 26px;

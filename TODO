@@ -138,6 +138,69 @@ GO
 
 
 
+MYSQL
+CREATE TABLE CLIENT(
+	`CODE_CLT` varchar(7) NOT NULL,
+	`CLIENT` varchar(50) NULL,
+	`TEL` varchar(60) NULL,
+	`FAX` varchar(20) NULL,
+	`ADRESSE1LIV` varchar(50) NULL,
+	`ADRESSE2LIV` varchar(50) NULL,
+	`ADRESSE1FACT` varchar(50) NULL,
+	`ADRESSE2FACT` varchar(50) NULL,
+	`VILLELIV` varchar(20) NULL,
+	`VILLEFACT` varchar(20) NULL,
+	`PAYS` varchar(20) NULL,
+	`E_MAIL` varchar(60) NULL,
+	`BLOQUER` char(1) NULL DEFAULT 'N',
+	`CPLIV` varchar(20) NULL,
+	`CPFACT` char(10) NULL,
+	`COMMENTAIRE` varchar(200) NULL,
+	`ECHEANCE` int NULL,
+	`APARTIRDE` varchar(20) NULL,
+	`OBJECTIF` Double NULL,
+	`Site` varchar(30) NULL,
+	`REF_CATEG` int NULL,
+	`REF_MODEPAIE` int NULL DEFAULT '0',
+	`Avantage` char(1) NULL DEFAULT '1',
+	`datecreation` datetime(3) NULL,
+	`codebadge` varchar(10) NULL,
+	`solde_du` Double NULL,
+	`plafond` Double NULL,
+	`mobile` varchar(20) NULL,
+	`compte_compt` varchar(20) NULL,
+	`categorie` varchar(50) NULL,
+  `nbptcadeau` int NULL DEFAULT '0',
+	`nbpt` int NULL,
+	`credit` Double NULL DEFAULT '0',
+	`soldec` Double NULL,
+	`CODE_COM` varchar(10) NULL,
+	`code_cltcharge` varchar(7) NULL,
+	`personnel` varchar(1) NULL DEFAULT 'N',
+	`Rremise` Double NULL DEFAULT '0',
+	`Moisrem` varchar(2) NULL,
+	`REMCAISSE` Double NULL DEFAULT '0',
+	`soldereel` Double NULL DEFAULT '0',
+	`plafonnee` Tinyint NULL DEFAULT '0',
+	`E01` varchar(1) NULL DEFAULT 'C',
+	`sync` int NULL DEFAULT '0',
+	`RC` varchar(50) NULL,
+	`ICE` varchar(50) NULL,
+	`factimediat` Tinyint NULL DEFAULT '0',
+	`ref_modepaiepremier` int NULL,
+	`telephone2` varchar(60) NULL,
+	`code_soc` int NULL DEFAULT '0',
+	`solde` real NULL DEFAULT '0',
+	`remise` Double NULL,
+	`tauxsub` Double NULL DEFAULT '0',
+ CONSTRAINT `PK__CLIENTS__76CBA758` PRIMARY KEY
+(
+	`CODE_CLT` ASC
+)
+);
+
+
+
 
 show columns in sql server:
 public static function showColumns(){

@@ -12,23 +12,19 @@ switch ($a) {
 		break;
 
 	case 'get':
-		// $args = array("table" => "client");
-		Customers::get($args);
 		$data = array();
-		foreach (Customers::get($args) as $Customer) {
-			$sub_array = array();
-			$sub_array[] = $Customer["CLIENT"];
-			$sub_array[] = $Customer["TEL"];
-			$sub_array[] = $Customer["ADRESSE1LIV"];
-			$data[] = $sub_array;
+		$columns = array();
+
+		// get only column name
+		foreach (Customers::getColumns($args["table"]) as $field) {
+			$columns[] = $field->Field;
 		}
+
+		// assign columnNames and customer data to $data
+		$data["column"] = $columns;
+		$data["customer"] = Customers::get($args);
 		echo json_encode($data);
-
-		// if (Utils::isAjax()) {
-		// 	echo json_encode(Customers::get($args));
-		// }
 		break;
-
 
 	default:
 		header("location:../index.php");

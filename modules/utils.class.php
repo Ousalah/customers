@@ -8,9 +8,22 @@ class Utils
 
 		try {
 			if(!self::$cnx) {
-				$cnx = new PDO("sqlsrv:Server=.,1433;Database=DONNEESLPSIEGE", "sa", "2013@2013");
+				// start sql server
+				// local
+				// $cnx = new PDO("sqlsrv:Server=.,1433;Database=DONNEESLPSIEGE", "sa", "2013@2013");
+				// Remote
 				// $cnx = new PDO("sqlsrv:Server=105.159.255.86;Database=DONNEES");
-				$cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				// $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				// end sql server
+
+				// start mysql
+				$options = array(
+					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+					PDO::ATTR_ERRMODE 					 => PDO::ERRMODE_EXCEPTION,
+					PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"
+				);
+				$cnx = new PDO('mysql:host=localhost;dbname=DONNEESLPSIEGE', "root", "", $options);
+				// end mysql
 			}
 		} catch (Exception $e) {
 			die(print_r($e->getMessage()));
@@ -20,7 +33,7 @@ class Utils
 
 	}
 
-	// used the first time in Survey Project
+	// check if table exist
 	public static function tableExists($table) {
 		// Try a select statement against the table
 		// Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
@@ -482,6 +495,27 @@ class Utils
 	public static function isAjax()
 	{
 		return (isset($_SERVER["HTTP_X_REQUESTED_WITH"])) && ($_SERVER["HTTP_X_REQUESTED_WITH"] == 'XMLHttpRequest');
+	}
+
+	/**
+	* function to get columns of table
+	* @return columnNames
+	*/
+	public static function getColumns($table, $db = "mysql") {
+		$cnx = Utils::connect_db();
+
+		$sql = "";
+		if ($db == "sqlsrv") {
+			$sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = $table ";
+		} else if ($db == "mysql") {
+			$sql = "SHOW COLUMNS FROM $table";
+		} else {
+			return array();
+		}
+
+		$pr = $cnx->prepare($sql);
+		$pr->execute();
+		return $pr->fetchAll(PDO::FETCH_OBJ);
 	}
 
 }
