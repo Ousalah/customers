@@ -8,21 +8,20 @@ class Utils
 
 		try {
 			if(!self::$cnx) {
-				// start sql server
-				// local
-				// $cnx = new PDO("sqlsrv:Server=.,1433;Database=DONNEESLPSIEGE", "sa", "2013@2013");
-				// Remote
-				// $cnx = new PDO("sqlsrv:Server=105.159.255.86;Database=DONNEES");
-				// $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				// end sql server
-
-				// start mysql
 				$options = array(
 					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
 					PDO::ATTR_ERRMODE 					 => PDO::ERRMODE_EXCEPTION,
 					PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"
 				);
-				$cnx = new PDO('mysql:host=localhost;dbname=DONNEESLPSIEGE', "root", "", $options);
+				// start sql server
+				// local
+				$cnx = new PDO("sqlsrv:Server=.,1433;Database=DONNEESLPSIEGE", "sa", "2013@2013", $options);
+				// Remote
+				// $cnx = new PDO("sqlsrv:Server=105.159.255.86;Database=DONNEES");
+				// end sql server
+
+				// start mysql
+				// $cnx = new PDO('mysql:host=localhost;dbname=DONNEESLPSIEGE', "root", "", $options);
 				// end mysql
 			}
 		} catch (Exception $e) {
@@ -30,7 +29,6 @@ class Utils
 		}
 
 		return  $cnx;
-
 	}
 
 	// check if table exist
@@ -501,12 +499,12 @@ class Utils
 	* function to get columns of table
 	* @return columnNames
 	*/
-	public static function getColumns($table, $db = "mysql") {
+	public static function getColumns($table, $db = "sqlsrv") {
 		$cnx = Utils::connect_db();
 
 		$sql = "";
 		if ($db == "sqlsrv") {
-			$sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = $table ";
+			$sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" . $table . "'";
 		} else if ($db == "mysql") {
 			$sql = "SHOW COLUMNS FROM $table";
 		} else {

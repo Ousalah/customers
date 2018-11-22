@@ -17,7 +17,7 @@ switch ($a) {
 
 		// get only column name
 		foreach (Customers::getColumns($args["table"]) as $field) {
-			$columns[] = $field->Field;
+			$columns[] = $field->COLUMN_NAME;
 		}
 
 		// assign columnNames and customer data to $data

@@ -143,6 +143,7 @@ body {
   text-transform: capitalize;
   font-weight: bold;
   font-size: 18px;
+  white-space: nowrap;
 }
 .customers-grid .customer-grid .customer-details p {
   margin: 5px 0;

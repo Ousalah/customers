@@ -43,13 +43,18 @@ $(function () {
   })
 
   .done(function(data) {
-    var thead = ""
+    var thead = "<tr>";
+    for (var c in data.column) {
+      thead += "<th>" + data.column[c] + "</th>";
+    }
+    thead +="<th>Action</th></tr>";
+    $('#table-customers-list thead').html( thead );
+
 		var tbody = "";
     var customerGrid = '<div class="container"><div class="row">';
 
     for (var i in data.customer) {
       var customer = data.customer[i];
-      thead += "<tr>";
       tbody += "<tr>";
 
       // check if is not null client name, then set data to 'customerGrid'
@@ -65,11 +70,9 @@ $(function () {
 
       for (var c in data.column) {
         var column = data.column[c];
-        thead += "<th>" + column + "</th>";
         tbody += "<td>" + customer[column] + "</td>";
       }
 
-      thead +="<th>Action</th></tr>";
       tbody += '<td>';
         tbody += '<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>';
         tbody += ' <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>';
@@ -79,7 +82,6 @@ $(function () {
 
     customerGrid += "</div></div>"
 
-    $('#table-customers-list thead').html( thead );
     $('#table-customers-list tbody').html( tbody );
     datatablesInit();
 
