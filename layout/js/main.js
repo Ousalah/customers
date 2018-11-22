@@ -35,14 +35,19 @@ $(function () {
       args: { table: "CLIENT" },
     },
     beforeSend : function(){
-      $('#table-customers-list thead').html("loading ...");
-      $('#table-customers-list tbody').html("loading ...");
-      $('.customers-grid').html("loading ...");
+      $('#table-customers-list thead').html("");
+      $('#table-customers-list tbody').html("");
+      $('.customers-list').addClass('spinner');
+      $('.customers-grid').html("");
+      $('.customers-grid').addClass('spinner');
 
     }
   })
 
   .done(function(data) {
+    $('.customers-list').removeClass('spinner');
+    $('.customers-grid').removeClass('spinner');
+
     var thead = "<tr>";
     for (var c in data.column) {
       thead += "<th>" + data.column[c] + "</th>";
