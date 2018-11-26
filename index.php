@@ -51,6 +51,60 @@
     </div>
     <!-- End Header -->
 
+    <!-- Start add customers -->
+    <div class="customers-add">
+      <div class="container">
+        <div class="row">
+          <form>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-xs-2 control-label">Email</label>
+                <div class="col-xs-8">
+                  <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputPassword3" class="col-xs-2 control-label">Password</label>
+                <div class="col-xs-8">
+                  <input type="text" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--  -->
+        <ul class="nav nav-tabs nav-justified" role="tablist" style="margin-top: 30px;">
+          <li class="active" role="presentation">
+            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+          </li>
+          <li role="presentation">
+            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+          </li>
+          <li role="presentation">
+            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
+          </li>
+        </ul>
+        <!--  -->
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="home" role="tabpanel">
+            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quo aut aliquam suscipit facere cupiditate, in facilis labore similique repellat sint blanditiis omnis error soluta iste, eum odio praesentium at!</h3>
+          </div>
+          <div class="tab-pane" id="profile" role="tabpanel">
+            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur vitae perspiciatis ducimus, laudantium reprehenderit! Libero molestiae nesciunt debitis sapiente quidem, natus, fugiat, tempora adipisci quam eveniet velit odit. Hic, nostrum.</h3>
+          </div>
+          <div class="tab-pane" id="messages" role="tabpanel">
+            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam repellat nostrum odit reiciendis, omnis autem placeat? Ab, voluptates facere quam dolorum tenetur labore quos ipsam culpa amet, iure voluptatibus nisi!</h3>
+          </div>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+    <!-- End add customers -->
+
     <!--  Start Customers grid -->
     <div class="_customers-view customers-grid">
       <div class="container">
@@ -220,3 +274,4 @@
     <!-- End  -->
 
     <?php include $tpl . "footer.php"; ?>
+  </div>
