@@ -51,6 +51,9 @@
 // Start Customers grid
 .customers-grid {
   display: none;
+  &.spinner {
+    height: calc(100vh - 200px);
+  }
   .customer-grid {
     border: 1px solid #d9d7d7;
     padding: 10px;
@@ -85,6 +88,9 @@
 
 // Start customers list
 .customers-list {
+  &.spinner {
+    height: calc(100vh - 200px);
+  }
   .dataTable td,
   .dataTable th {
     white-space: nowrap;

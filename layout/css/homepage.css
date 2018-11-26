@@ -168,6 +168,9 @@ body {
 .customers-grid {
   display: none;
 }
+.customers-grid.spinner {
+  height: calc(100vh - 200px);
+}
 .customers-grid .customer-grid {
   border: 1px solid #d9d7d7;
   padding: 10px;
@@ -196,6 +199,9 @@ body {
   overflow: hidden;
 }
 
+.customers-list.spinner {
+  height: calc(100vh - 200px);
+}
 .customers-list .dataTable td,
 .customers-list .dataTable th {
   white-space: nowrap;
