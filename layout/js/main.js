@@ -10,6 +10,49 @@ $(function () {
   });
   // end switch between list and grid view
 
+  // start add customer info
+  function addCustomers() {
+    $.ajax({
+      url: "controller/Customers.php",
+      type: "POST",
+      dataType: "json",
+      data: {
+        a: "add",
+        t: "CLIENT",
+        customerInfo : $(".form-add-customers").serialize()
+      },
+      beforeSend : function(){
+      }
+    })
+
+    .done(function(data) {
+      console.log("done : " + data.customerInfo);
+      for (var i in data.customerInfo) {
+        if (object.hasOwnProperty(i)) {
+          console.log(object);
+        }
+      }
+    })
+
+    .fail(function(data) {
+      console.log("fail");
+      for (var i in data.customerInfo) {
+        if (object.hasOwnProperty(i)) {
+          console.log(object);
+        }
+      }
+    })
+
+    .always(function() {
+      console.log("always");
+    });
+  }
+
+  $(".zones .actions .btn-transparent").on("click", function () {
+    addCustomers();
+  });
+  // end add customer info
+
   // start datatables
   function datatablesInit() {
     $('#table-customers-list').DataTable({

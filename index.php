@@ -55,25 +55,25 @@
     <div class="customers-add">
       <!-- start container -->
       <div class="container">
-        <form class="form-horizontal">
+        <form class="form-add-customers form-horizontal">
           <!--  start lef form -->
           <div class="col-md-6">
             <div class="form-group">
               <label for="code_clt" class="col-xs-2 control-label">Ref</label>
               <div class="col-xs-4">
-                <input type="text" class="form-control" id="code_clt" placeholder="0123456" disabled>
+                <input type="text" class="form-control" name="code_clt" placeholder="0123456" value="0000210" readonly>
               </div>
             </div>
             <div class="form-group">
               <label for="client" class="col-xs-2 control-label">Client</label>
               <div class="col-xs-9">
-                <input type="text" class="form-control" id="client" placeholder="Client Name">
+                <input type="text" class="form-control" name="client" placeholder="Client Name">
               </div>
             </div>
             <div class="form-group">
               <label for="e_mail" class="col-xs-2 control-label">Email</label>
               <div class="col-xs-9">
-                <input type="text" class="form-control" id="e_mail" placeholder="name@mail.com">
+                <input type="text" class="form-control" name="e_mail" placeholder="name@mail.com">
               </div>
             </div>
           </div>
@@ -84,19 +84,19 @@
             <div class="form-group">
               <label for="tel" class="col-xs-2 control-label">Phone</label>
               <div class="col-xs-9">
-                <input type="tel" class="form-control" id="tel" placeholder="0612345678">
+                <input type="tel" class="form-control" name="tel" placeholder="0612345678">
               </div>
             </div>
             <div class="form-group">
               <label for="fax" class="col-xs-2 control-label">Fax</label>
               <div class="col-xs-9">
-                <input type="tel" class="form-control" id="fax" placeholder="0522000000">
+                <input type="tel" class="form-control" name="fax" placeholder="0522000000">
               </div>
             </div>
             <div class="form-group">
               <label for="mobile" class="col-xs-2 control-label">Mobile</label>
               <div class="col-xs-9">
-                <input type="tel" class="form-control" id="mobile" placeholder="0612345678">
+                <input type="tel" class="form-control" name="mobile" placeholder="0612345678">
               </div>
             </div>
           </div>
@@ -133,21 +133,21 @@
               <div class="form-group">
                 <label for="code_clt" class="col-xs-2 control-label">Code Badge</label>
                 <div class="col-xs-4">
-                  <input type="text" class="form-control" id="code_clt" placeholder="0123456">
+                  <input type="text" class="form-control" nameD="code_badge" placeholder="0123456">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-4 control-label" for="radios">Avantage</label>
+                <label class="col-md-4 control-label" for="avantage">Avantage</label>
                 <div class="col-md-4">
                   <div class="radio">
-                    <label for="radios-0">
-                      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                    <label for="avantage-0">
+                      <input type="radio" nameD="avantage" id="avantage-0" value="1" checked="checked">
                       Aucun (Encours d'étude)
                     </label>
                   </div>
                   <div class="radio">
-                    <label for="radios-1">
-                      <input type="radio" name="radios" id="radios-1" value="2">
+                    <label for="avantage-1">
+                      <input type="radio" nameD="avantage" id="avantage-1" value="2">
                       Client fidéle et peut avoir crédit
                     </label>
                   </div>
@@ -158,7 +158,7 @@
 
             <!-- start commentaire -->
             <div class="tab-pane" id="commentaire" role="tabpanel">
-              <textarea name="name" rows="8" cols="80"></textarea>
+              <textarea name="commentaire" rows="8" cols="80" placeholder="Commentaire"></textarea>
             </div>
             <!-- end commentaire -->
 
@@ -167,21 +167,21 @@
               <div class="form-group">
                 <label for="client" class="col-xs-2 control-label">Address Livraison</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" id="client" placeholder="Client Name">
-                  <input type="text" class="form-control" id="client" placeholder="Client Name">
+                  <input type="text" class="form-control" name="adresse1liv" placeholder="Client Name">
+                  <input type="text" class="form-control" name="adresse2liv" placeholder="Client Name">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
                   <label for="code_clt" class="col-xs-2 control-label">Code Postale</label>
                   <div class="col-xs-5">
-                    <input type="text" class="form-control" id="code_clt" placeholder="0123456">
+                    <input type="text" class="form-control" name="cpliv" placeholder="0123456">
                   </div>
                 </div>
                 <div class="col-xs-6">
                   <label for="code_clt" class="col-xs-2 control-label">Ville</label>
                   <div class="col-xs-5">
-                    <input type="text" class="form-control" id="code_clt" placeholder="0123456">
+                    <input type="text" class="form-control" name="villeliv" placeholder="0123456">
                   </div>
                 </div>
               </div>
@@ -193,21 +193,21 @@
               <div class="form-group">
                 <label for="client" class="col-xs-2 control-label">Address Facturation</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" id="client" placeholder="Client Name">
-                  <input type="text" class="form-control" id="client" placeholder="Client Name">
+                  <input type="text" class="form-control" name="adresse1fact" placeholder="Client Name">
+                  <input type="text" class="form-control" name="adresse2fact" placeholder="Client Name">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-xs-6">
                   <label for="code_clt" class="col-xs-2 control-label">Code Postale</label>
                   <div class="col-xs-5">
-                    <input type="text" class="form-control" id="code_clt" placeholder="0123456">
+                    <input type="text" class="form-control" name="cpfact" placeholder="0123456">
                   </div>
                 </div>
                 <div class="col-xs-6">
                   <label for="code_clt" class="col-xs-2 control-label">Ville</label>
                   <div class="col-xs-5">
-                    <input type="text" class="form-control" id="code_clt" placeholder="0123456">
+                    <input type="text" class="form-control" name="villefact" placeholder="0123456">
                   </div>
                 </div>
               </div>

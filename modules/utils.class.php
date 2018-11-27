@@ -98,36 +98,34 @@ class Utils
 	* @param $data (require) : data to insert : $_POST
 	* @param $image (optional) : image info(dossier,name,tmp_name,size) : $_FILES
 	**/
-	public static function insert($table, $data=array(), $image=array()) {
-		$names=array();
-		$values=array();
-		$trous=array();
+	public static function insert($table, $data = array(), $image = array()) {
+		$names  = array();
+		$values = array();
+		$trous  = array();
 		foreach ($data as $key => $value) {
 
 			// if there is Multi values for one field, like checkboks
 			if(is_array($value)){ $value = implode(', ', $value); }
 
-			$names[]=$key;
-			$values[]=$value;
-			$trous[]='?';
+			$names[]  = $key;
+			$values[] = $value;
+			$trous[]  = '?';
 		}
 		# -- test if Isset image.
-		if (($image!=array())) {
+		if (($image != array())) {
 			$imagePath = Utils::upload($image);
 
-			$names[] = "image";
+			$names[]  = "image";
 			$values[] = $imagePath;
-			$trous[] = '?';
+			$trous[]  = '?';
 		}
 
-		$trousdb=implode(',', $trous);
-		$namesdb=implode(',', $names);
+		$trousdb = implode(',', $trous);
+		$namesdb = implode(',', $names);
 		$cnx = Utils::connect_db();
 		$pr = $cnx->prepare("insert into $table ($namesdb) values($trousdb)");
-		var_dump($pr);
+		// var_dump($pr);
 		$pr->execute($values);
-
-
 	}
 
 	public static function update($table,	$data=array(), $id, $image=array(), $nomid="id") {

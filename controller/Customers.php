@@ -6,9 +6,10 @@ extract($_POST);
 switch ($a) {
 
 	case 'add':
-		echo "insert begin";
-		Customers::insert($t, $_POST);
-		Customers::set_val_session("notice", "The addition was <strong>successfully</strong> completed.");
+		$customerInfo = array();
+		parse_str($_POST['customerInfo'], $customerInfo);
+		Customers::insert($_POST["t"], $customerInfo);
+		// Customers::set_val_session("notice", "The addition was <strong>successfully</strong> completed.");
 		break;
 
 	case 'get':
