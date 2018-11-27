@@ -26,79 +26,95 @@ $(function () {
   }
   // end datatables
 
-  $.ajax({
-		url: "controller/Customers.php",
-    type: "POST",
-		dataType: "json",
-    data: {
-      a: "get",
-      args: { table: "CLIENT" },
-    },
-    beforeSend : function(){
-      $('#table-customers-list thead').html("");
-      $('#table-customers-list tbody').html("");
-      $('.customers-list').addClass('spinner');
-      $('.customers-grid').html("");
-      $('.customers-grid').addClass('spinner');
+  function getCustomers() {
+    $.ajax({
+      url: "controller/Customers.php",
+      type: "POST",
+      dataType: "json",
+      data: {
+        a: "get",
+        args: { table: "CLIENT" },
+      },
+      beforeSend : function(){
+        $('#table-customers-list thead').html("");
+        $('#table-customers-list tbody').html("");
+        $('.customers-list').addClass('spinner');
+        // $('.customers-grid').html("");
+        $('.customers-grid').addClass('spinner');
 
-    }
-  })
-
-  .done(function(data) {
-    $('.customers-list').removeClass('spinner');
-    $('.customers-grid').removeClass('spinner');
-
-    var thead = "<tr>";
-    for (var c in data.column) {
-      thead += "<th>" + data.column[c] + "</th>";
-    }
-    thead +="<th>Action</th></tr>";
-    $('#table-customers-list thead').html( thead );
-
-		var tbody = "";
-    var customerGrid = '<div class="container"><div class="row">';
-
-    for (var i in data.customer) {
-      var customer = data.customer[i];
-      tbody += "<tr>";
-
-      // check if is not null client name, then set data to 'customerGrid'
-      if (customer.CLIENT) {
-        customerGrid += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">';
-          customerGrid += '<div class="customer-grid">';
-            customerGrid += '<div class="customer-details text-center">';
-              customerGrid += '<h3 class="fullname"><i class="fa fa-user"></i> ' + customer.CLIENT + '</h3>';
-              if (customer.TEL) customerGrid += '<p><i class="fa fa-map-marker"></i> ' + customer.TEL + '</p>';
-              if (customer.ADRESSE1LIV) customerGrid += '<p><i class="fa fa-phone"></i> ' + customer.ADRESSE1LIV + '</p>';
-        customerGrid += '</div></div></div>';
       }
+    })
 
+    .done(function(data) {
+      $('.customers-list').removeClass('spinner');
+      $('.customers-grid').removeClass('spinner');
+
+      var thead = "<tr>";
       for (var c in data.column) {
-        var column = data.column[c];
-        tbody += "<td>" + customer[column] + "</td>";
+        thead += "<th>" + data.column[c] + "</th>";
       }
+      thead +="<th>Action</th></tr>";
+      $('#table-customers-list thead').html( thead );
 
-      tbody += '<td>';
+      var tbody = "";
+      var customerGrid = '<div class="container"><div class="row">';
+
+      for (var i in data.customer) {
+        var customer = data.customer[i];
+        tbody += "<tr>";
+
+        // check if is not null client name, then set data to 'customerGrid'
+        if (customer.CLIENT) {
+          customerGrid += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">';
+          customerGrid += '<div class="customer-grid">';
+          customerGrid += '<div class="customer-details text-center">';
+          customerGrid += '<h3 class="fullname"><i class="fa fa-user"></i> ' + customer.CLIENT + '</h3>';
+          if (customer.TEL) customerGrid += '<p><i class="fa fa-map-marker"></i> ' + customer.TEL + '</p>';
+          if (customer.ADRESSE1LIV) customerGrid += '<p><i class="fa fa-phone"></i> ' + customer.ADRESSE1LIV + '</p>';
+          customerGrid += '</div></div></div>';
+        }
+
+        for (var c in data.column) {
+          var column = data.column[c];
+          tbody += "<td>" + customer[column] + "</td>";
+        }
+
+        tbody += '<td>';
         tbody += '<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>';
         tbody += ' <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>';
         tbody += ' <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>';
-      tbody += '</td></tr>';
-    }
+        tbody += '</td></tr>';
+      }
 
-    customerGrid += "</div></div>"
+      customerGrid += "</div></div>"
 
-    $('#table-customers-list tbody').html( tbody );
-    datatablesInit();
+      $('#table-customers-list tbody').html( tbody );
+      datatablesInit();
 
-    $('.customers-grid').html( customerGrid );
-	})
+      $('.customers-grid').html( customerGrid );
+    })
 
-  .fail(function(data) {
-    console.log("error ");
-  })
+    .fail(function(data) {
+      console.log("error ");
+      $('.customers-list').removeClass('spinner');
+      $('.customers-grid').removeClass('spinner');
+      $('.customers-list .retry-btn').show();
+      $('.customers-grid .retry-btn').show();
+    })
 
-  .always(function() {
-    console.log("always");
+    .always(function() {
+      console.log("always");
+    });
+  }
+
+  // onload get customers
+  getCustomers();
+
+  // on click retry button get customers
+  $(".retry-btn").on("click", function() {
+    $('.customers-list .retry-btn').hide();
+    $('.customers-grid .retry-btn').hide();
+    getCustomers();
   });
 
 });

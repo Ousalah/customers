@@ -53,79 +53,24 @@
 
     <!--  Start Customers grid -->
     <div class="_customers-view customers-grid">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="customer-grid">
-              <div class="customer-details text-center">
-                <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
-                <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
-                <p><i class="fa fa-phone"></i> 06 62 662 660</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="customer-grid">
-              <div class="customer-details text-center">
-                <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
-                <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
-                <p><i class="fa fa-phone"></i> 06 62 662 660</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="customer-grid">
-              <div class="customer-details text-center">
-                <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
-                <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
-                <p><i class="fa fa-phone"></i> 06 62 662 660</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="customer-grid">
-              <div class="customer-details text-center">
-                <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
-                <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
-                <p><i class="fa fa-phone"></i> 06 62 662 660</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="customer-grid">
-              <div class="customer-details text-center">
-                <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
-                <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
-                <p><i class="fa fa-phone"></i> 06 62 662 660</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="customer-grid">
-              <div class="customer-details text-center">
-                <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
-                <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
-                <p><i class="fa fa-phone"></i> 06 62 662 660</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="customer-grid">
-              <div class="customer-details text-center">
-                <h3 class="fullname"><i class="fa fa-user"></i> the full name</h3>
-                <p><i class="fa fa-map-marker"></i> here is the address of the customer</p>
-                <p><i class="fa fa-phone"></i> 06 62 662 660</p>
-              </div>
-            </div>
+        <!-- start retry button -->
+        <div class="container">
+          <div class="retry-btn">
+            <button class="btn btn-dark btn-sm">retry</button>
           </div>
         </div>
-      </div>
+        <!-- end retry button -->
     </div>
     <!--  End Customers grid -->
 
     <!--  Start customers list-->
     <div class="_customers-view customers-list">
       <div class="container">
+        <!-- start retry button -->
+        <div class="retry-btn">
+          <button class="btn btn-dark btn-sm">retry</button>
+        </div>
+        <!-- end retry button -->
         <div class="row">
           <div class="col-xs-12">
             <table id="table-customers-list" class="table table-striped" style="width:100%">

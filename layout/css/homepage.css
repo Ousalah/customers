@@ -171,6 +171,18 @@ body {
 .customers-grid.spinner {
   height: calc(100vh - 200px);
 }
+.customers-grid .retry-btn {
+  position: relative;
+  height: calc(100vh - 200px);
+  display: none;
+}
+.customers-grid .retry-btn button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+}
 .customers-grid .customer-grid {
   border: 1px solid #d9d7d7;
   padding: 10px;
@@ -201,6 +213,18 @@ body {
 
 .customers-list.spinner {
   height: calc(100vh - 200px);
+}
+.customers-list .retry-btn {
+  position: relative;
+  height: calc(100vh - 200px);
+  display: none;
+}
+.customers-list .retry-btn button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
 }
 .customers-list .dataTable td,
 .customers-list .dataTable th {
