@@ -69,8 +69,8 @@
   .customer-grid {
     border: 1px solid #d9d7d7;
     padding: 10px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 100px;
     cursor: pointer;
     &:hover {
@@ -121,3 +121,34 @@
   }
 }
 // End customers list
+
+// Start customers add
+.customers-add {
+  .form-add-customers {
+    .main-form {
+      .left-form {
+        margin-bottom: 50px;
+        .control-label {
+          padding-left: 0;
+        }
+      }
+      .right-form {
+        margin-bottom: 50px;
+      }
+    }
+    .control-label {
+      text-align: left;
+    }
+    .form-control {
+      border-width: 0 0 1px;
+      box-shadow: none;
+      border-radius: 0;
+      padding-left: 0;
+    }
+    .tab-content {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}
+// End customers add

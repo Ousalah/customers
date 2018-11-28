@@ -15,9 +15,9 @@ class Utils
 				);
 				// start sql server
 				// local
-				$cnx = new PDO("sqlsrv:Server=.,1433;Database=DONNEESLPSIEGE", "sa", "2013@2013", $options);
+				// $cnx = new PDO("sqlsrv:Server=.,1433;Database=DONNEESLPSIEGE", "sa", "2013@2013", $options);
 				// Remote
-				// $cnx = new PDO("sqlsrv:Server=105.159.255.86;Database=DONNEES");
+				$cnx = new PDO("sqlsrv:Server=105.159.255.86;Database=DONNEES", "attijari2013", "VOIE_2013", $options);
 				// end sql server
 
 				// start mysql

@@ -56,74 +56,84 @@
       <!-- start container -->
       <div class="container">
         <form class="form-add-customers form-horizontal">
-          <!--  start lef form -->
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="code_clt" class="col-xs-2 control-label">Ref</label>
-              <div class="col-xs-4">
-                <input type="text" class="form-control" name="code_clt" placeholder="0123456" value="0000210" readonly>
+          <!-- start main form -->
+          <div class="main-form">
+            <!--  start lef form -->
+            <div class="col-md-6">
+              <div class="left-form">
+                <div class="form-group">
+                  <label class="col-xs-2 control-label">Ref</label>
+                  <div class="col-xs-4">
+                    <input type="text" class="form-control" name="code_clt" placeholder="0123456" value="0000210" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="client" class="col-xs-2 control-label">Client</label>
+                  <div class="col-xs-9">
+                    <input type="text" class="form-control" name="client" placeholder="Client Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="e_mail" class="col-xs-2 control-label">Email</label>
+                  <div class="col-xs-9">
+                    <input type="text" class="form-control" name="e_mail" placeholder="name@mail.com">
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="client" class="col-xs-2 control-label">Client</label>
-              <div class="col-xs-9">
-                <input type="text" class="form-control" name="client" placeholder="Client Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="e_mail" class="col-xs-2 control-label">Email</label>
-              <div class="col-xs-9">
-                <input type="text" class="form-control" name="e_mail" placeholder="name@mail.com">
-              </div>
-            </div>
-          </div>
-          <!-- end left form -->
+            <!-- end left form -->
 
-          <!-- start right form -->
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="tel" class="col-xs-2 control-label">Phone</label>
-              <div class="col-xs-9">
-                <input type="tel" class="form-control" name="tel" placeholder="0612345678">
+            <!-- start right form -->
+            <div class="col-md-6">
+              <div class="right-form">
+                <div class="form-group">
+                  <label for="tel" class="col-xs-2 control-label">Phone</label>
+                  <div class="col-xs-9">
+                    <input type="tel" class="form-control" name="tel" placeholder="0612345678">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="fax" class="col-xs-2 control-label">Fax</label>
+                  <div class="col-xs-9">
+                    <input type="tel" class="form-control" name="fax" placeholder="0522000000">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="mobile" class="col-xs-2 control-label">Mobile</label>
+                  <div class="col-xs-9">
+                    <input type="tel" class="form-control" name="mobile" placeholder="0612345678">
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="fax" class="col-xs-2 control-label">Fax</label>
-              <div class="col-xs-9">
-                <input type="tel" class="form-control" name="fax" placeholder="0522000000">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="mobile" class="col-xs-2 control-label">Mobile</label>
-              <div class="col-xs-9">
-                <input type="tel" class="form-control" name="mobile" placeholder="0612345678">
-              </div>
-            </div>
+            <!-- end right form -->
           </div>
-          <!-- end right form -->
+          <!-- end main form -->
 
           <!-- start nav tabs -->
-          <ul class="nav nav-tabs nav-justifieed" role="tablist" style="margin-top: 30px;">
-            <li class="active" role="presentation">
-              <a href="#fidelity-management" aria-controls="fidelity-management" role="tab" data-toggle="tab">Gestion Fidélité</a>
-            </li>
-            <li role="presentation">
-              <a href="#commentaire" aria-controls="commentaire" role="tab" data-toggle="tab">Commentaire</a>
-            </li>
-            <li role="presentation" class="dropdown">
-              <a href="#" class="dropdown-toggle" id="myTabDrop1" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="true">
-                address <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-                <li>
-                  <a href="#address-livraison" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">livraison</a>
-                </li>
-                <li>
-                  <a href="#address-facturation" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">facturation</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <div class="nav-tab-container">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active" role="presentation">
+                <a href="#fidelity-management" aria-controls="fidelity-management" role="tab" data-toggle="tab">Gestion Fidélité</a>
+              </li>
+              <li role="presentation">
+                <a href="#commentaire" aria-controls="commentaire" role="tab" data-toggle="tab">Commentaire</a>
+              </li>
+              <li role="presentation" class="dropdown">
+                <a href="#" class="dropdown-toggle" id="myTabDrop1" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="true">
+                  address <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+                  <li>
+                    <a href="#address-livraison" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">livraison</a>
+                  </li>
+                  <li>
+                    <a href="#address-facturation" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">facturation</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
           <!-- end nav tabs -->
 
           <!-- start tab content -->
@@ -131,23 +141,23 @@
             <!-- start fidelity management -->
             <div class="tab-pane active" id="fidelity-management" role="tabpanel" aria-labelledby="fidelity-management-tab">
               <div class="form-group">
-                <label for="code_clt" class="col-xs-2 control-label">Code Badge</label>
+                <label for="codebadge" class="col-xs-2 control-label">Code Badge</label>
                 <div class="col-xs-4">
-                  <input type="text" class="form-control" nameD="code_badge" placeholder="0123456">
+                  <input type="text" class="form-control" name="codebadge" placeholder="Code Badge">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-4 control-label" for="avantage">Avantage</label>
-                <div class="col-md-4">
+                <label class="col-xs-2 control-label" for="avantage">Avantage</label>
+                <div class="col-xs-6">
                   <div class="radio">
                     <label for="avantage-0">
-                      <input type="radio" nameD="avantage" id="avantage-0" value="1" checked="checked">
+                      <input type="radio" name="avantage" id="avantage-0" value="1" checked="checked">
                       Aucun (Encours d'étude)
                     </label>
                   </div>
                   <div class="radio">
                     <label for="avantage-1">
-                      <input type="radio" nameD="avantage" id="avantage-1" value="2">
+                      <input type="radio" name="avantage" id="avantage-1" value="2">
                       Client fidéle et peut avoir crédit
                     </label>
                   </div>
@@ -158,31 +168,25 @@
 
             <!-- start commentaire -->
             <div class="tab-pane" id="commentaire" role="tabpanel">
-              <textarea name="commentaire" rows="8" cols="80" placeholder="Commentaire"></textarea>
+              <textarea class="form-control" name="commentaire" rows="4" cols="80" placeholder="Commentaire"></textarea>
             </div>
             <!-- end commentaire -->
 
             <!-- start shipping address  -->
             <div class="tab-pane" id="address-livraison" role="tabpanel">
               <div class="form-group">
-                <label for="client" class="col-xs-2 control-label">Address Livraison</label>
+                <label for="adresse1liv" class="col-xs-2 control-label">Address Livraison</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="adresse1liv" placeholder="Client Name">
-                  <input type="text" class="form-control" name="adresse2liv" placeholder="Client Name">
+                  <input type="text" class="form-control" name="adresse1liv" placeholder="Address Livraison 1">
+                  <input type="text" class="form-control" name="adresse2liv" placeholder="Address Livraison 2">
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="code_clt" class="col-xs-2 control-label">Code Postale</label>
-                  <div class="col-xs-5">
-                    <input type="text" class="form-control" name="cpliv" placeholder="0123456">
-                  </div>
+                <div class="col-xs-5 col-xs-offset-2">
+                  <input type="text" class="form-control" name="cpliv" placeholder="Code Postale">
                 </div>
-                <div class="col-xs-6">
-                  <label for="code_clt" class="col-xs-2 control-label">Ville</label>
-                  <div class="col-xs-5">
-                    <input type="text" class="form-control" name="villeliv" placeholder="0123456">
-                  </div>
+                <div class="col-xs-5">
+                  <input type="text" class="form-control" name="villeliv" placeholder="Ville">
                 </div>
               </div>
             </div>
@@ -191,24 +195,18 @@
             <!-- start billing address  -->
             <div class="tab-pane" id="address-facturation" role="tabpanel">
               <div class="form-group">
-                <label for="client" class="col-xs-2 control-label">Address Facturation</label>
+                <label for="adresse1fact" class="col-xs-2 control-label">Address Facturation</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="adresse1fact" placeholder="Client Name">
-                  <input type="text" class="form-control" name="adresse2fact" placeholder="Client Name">
+                  <input type="text" class="form-control" name="adresse1fact" placeholder="Address Facturation 1">
+                  <input type="text" class="form-control" name="adresse2fact" placeholder="Address Facturation 2">
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="code_clt" class="col-xs-2 control-label">Code Postale</label>
-                  <div class="col-xs-5">
-                    <input type="text" class="form-control" name="cpfact" placeholder="0123456">
-                  </div>
+                <div class="col-xs-5 col-xs-offset-2">
+                  <input type="text" class="form-control" name="cpfact" placeholder="Code Postale">
                 </div>
-                <div class="col-xs-6">
-                  <label for="code_clt" class="col-xs-2 control-label">Ville</label>
-                  <div class="col-xs-5">
-                    <input type="text" class="form-control" name="villefact" placeholder="0123456">
-                  </div>
+                <div class="col-xs-5">
+                  <input type="text" class="form-control" name="villefact" placeholder="Ville">
                 </div>
               </div>
             </div>
@@ -223,13 +221,14 @@
 
     <!--  Start Customers grid -->
     <div class="_customers-view customers-grid">
-        <!-- start retry button -->
+      <!-- start retry button -->
+      <div class="retry-btn">
         <div class="container">
-          <div class="retry-btn">
-            <button class="btn btn-dark btn-sm">retry</button>
-          </div>
+          <button class="btn btn-dark btn-sm">retry</button>
         </div>
-        <!-- end retry button -->
+      </div>
+      <!-- end retry button -->
+      <div class="customers-grid-content"></div>
     </div>
     <!--  End Customers grid -->
 
@@ -244,78 +243,8 @@
         <div class="row">
           <div class="col-xs-12">
             <table id="table-customers-list" class="table table-striped" style="width:100%">
-              <thead>
-                <tr>
-                  <th>Client</th>
-                  <th>Telephone</th>
-                  <th>Fax</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
-                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>
-                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
-                  </td>
-                </tr>
-              </tbody>
+              <thead></thead>
+              <tbody></tbody>
             </table>
           </div>
         </div>
@@ -323,16 +252,4 @@
     </div>
     <!--  End customers list-->
 
-    <!--  Start -->
-    <!-- <form class="" action="controller/Customers.php?t=client&a=add" method="post"> -->
-    <!-- <form class="" action="controller/Customers.php?t=ztest&a=add" method="post"> -->
-      <!-- <input type="text" name="username"> -->
-      <!-- <input type="text" name="client">
-      <input type="text" name="code_clt" value="0000208">
-      <input type="submit" value="save">
-
-    </form> -->
-    <!-- End  -->
-
     <?php include $tpl . "footer.php"; ?>
-  </div>

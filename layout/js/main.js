@@ -18,7 +18,7 @@ $(function () {
       dataType: "json",
       data: {
         a: "add",
-        t: "CLIENT",
+        t: "Z_TEST_CLIENT",
         customerInfo : $(".form-add-customers").serialize()
       },
       beforeSend : function(){
@@ -41,10 +41,6 @@ $(function () {
           console.log(object);
         }
       }
-    })
-
-    .always(function() {
-      console.log("always");
     });
   }
 
@@ -76,7 +72,7 @@ $(function () {
       dataType: "json",
       data: {
         a: "get",
-        args: { table: "CLIENT" },
+        args: { table: "Z_TEST_CLIENT" },
       },
       beforeSend : function(){
         $('#table-customers-list thead').html("");
@@ -134,7 +130,7 @@ $(function () {
       $('#table-customers-list tbody').html( tbody );
       datatablesInit();
 
-      $('.customers-grid').html( customerGrid );
+      $('.customers-grid > .customers-grid-content').html( customerGrid );
     })
 
     .fail(function(data) {
@@ -143,10 +139,6 @@ $(function () {
       $('.customers-grid').removeClass('spinner');
       $('.customers-list .retry-btn').show();
       $('.customers-grid .retry-btn').show();
-    })
-
-    .always(function() {
-      console.log("always");
     });
   }
 
