@@ -127,12 +127,19 @@
   .form-add-customers {
     .main-form {
       .left-form {
-        margin-bottom: 50px;
+        @media #{$min-medium} {
+          margin-bottom: 50px;
+        }
         .control-label {
           padding-left: 0;
         }
       }
       .right-form {
+        @media #{$max-small} {
+          .control-label {
+            padding-left: 0;
+          }
+        }
         margin-bottom: 50px;
       }
     }
@@ -144,6 +151,10 @@
       box-shadow: none;
       border-radius: 0;
       padding-left: 0;
+      @at-root textarea#{'.form-control'} {
+        resize: vertical;
+        max-height: 200px;
+      }
     }
     .tab-content {
       padding-top: 30px;

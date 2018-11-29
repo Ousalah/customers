@@ -215,14 +215,21 @@ body {
   white-space: nowrap;
 }
 
-.customers-add .form-add-customers .main-form .left-form {
-  margin-bottom: 50px;
+@media (min-width: 992px) {
+  .customers-add .form-add-customers .main-form .left-form {
+    margin-bottom: 50px;
+  }
 }
 .customers-add .form-add-customers .main-form .left-form .control-label {
   padding-left: 0;
 }
 .customers-add .form-add-customers .main-form .right-form {
   margin-bottom: 50px;
+}
+@media (max-width: 991px) {
+  .customers-add .form-add-customers .main-form .right-form .control-label {
+    padding-left: 0;
+  }
 }
 .customers-add .form-add-customers .control-label {
   text-align: left;
@@ -233,6 +240,11 @@ body {
   border-radius: 0;
   padding-left: 0;
 }
+textarea.form-control {
+  resize: vertical;
+  max-height: 200px;
+}
+
 .customers-add .form-add-customers .tab-content {
   padding-top: 30px;
   padding-bottom: 30px;
