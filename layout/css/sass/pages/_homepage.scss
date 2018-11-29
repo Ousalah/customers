@@ -134,6 +134,11 @@
 .customers-add {
   display: none;
   .form-add-customers {
+    border: 1px solid #d9d7d7;
+    box-shadow: 0 5px 20px -15px #000;
+    padding: 24px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     .main-form {
       .left-form {
         @media #{$min-medium} {
@@ -163,6 +168,7 @@
       @at-root textarea#{'.form-control'} {
         resize: vertical;
         max-height: 200px;
+        min-height: 50px;
       }
     }
     .tab-content {

@@ -224,6 +224,13 @@ body {
 .customers-add {
   display: none;
 }
+.customers-add .form-add-customers {
+  border: 1px solid #d9d7d7;
+  box-shadow: 0 5px 20px -15px #000;
+  padding: 24px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 @media (min-width: 992px) {
   .customers-add .form-add-customers .main-form .left-form {
     margin-bottom: 50px;
@@ -252,6 +259,7 @@ body {
 textarea.form-control {
   resize: vertical;
   max-height: 200px;
+  min-height: 50px;
 }
 
 .customers-add .form-add-customers .tab-content {
