@@ -17,7 +17,7 @@
             <div class="zones"><span class="main-breadcrumb">Customers</span></div>
           </div>
           <div class="col-sm-6">
-            <form class="zones form-horizontal" action="" method="get">
+            <form class="zones form-horizontal" action="index.php" method="get">
               <div class="search-form">
                 <input type="text" class="search form-control" placeholder="Search.." name="s">
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -78,13 +78,13 @@
                 <div class="form-group">
                   <label for="client" class="col-xs-2 control-label">Client</label>
                   <div class="col-xs-9">
-                    <input type="text" class="form-control" name="client" placeholder="Client Name">
+                    <input type="text" class="form-control" id="client" name="client" placeholder="Client Name">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="e_mail" class="col-xs-2 control-label">Email</label>
                   <div class="col-xs-9">
-                    <input type="text" class="form-control" name="e_mail" placeholder="name@mail.com">
+                    <input type="text" class="form-control" id="e_mail" name="e_mail" placeholder="name@mail.com">
                   </div>
                 </div>
               </div>
@@ -97,19 +97,19 @@
                 <div class="form-group">
                   <label for="tel" class="col-xs-2 control-label">Phone</label>
                   <div class="col-xs-9">
-                    <input type="tel" class="form-control" name="tel" placeholder="0612345678">
+                    <input type="tel" class="form-control" id="tel" name="tel" placeholder="0612345678">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="fax" class="col-xs-2 control-label">Fax</label>
                   <div class="col-xs-9">
-                    <input type="tel" class="form-control" name="fax" placeholder="0522000000">
+                    <input type="tel" class="form-control" id="fax" name="fax" placeholder="0522000000">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="mobile" class="col-xs-2 control-label">Mobile</label>
                   <div class="col-xs-9">
-                    <input type="tel" class="form-control" name="mobile" placeholder="0612345678">
+                    <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="0612345678">
                   </div>
                 </div>
               </div>
@@ -133,10 +133,10 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
                   <li>
-                    <a href="#address-livraison" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">livraison</a>
+                    <a href="#address-livraison" aria-controls="address-livraison" role="tab" data-toggle="tab">livraison</a>
                   </li>
                   <li>
-                    <a href="#address-facturation" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">facturation</a>
+                    <a href="#address-facturation" aria-controls="address-facturation" role="tab" data-toggle="tab">facturation</a>
                   </li>
                 </ul>
               </li>
@@ -147,15 +147,15 @@
           <!-- start tab content -->
           <div class="tab-content">
             <!-- start fidelity management -->
-            <div class="tab-pane active" id="fidelity-management" role="tabpanel" aria-labelledby="fidelity-management-tab">
+            <div class="tab-pane active" id="fidelity-management" role="tabpanel">
               <div class="form-group">
                 <label for="codebadge" class="col-xs-2 control-label">Code Badge</label>
                 <div class="col-xs-4">
-                  <input type="text" class="form-control" name="codebadge" placeholder="Code Badge">
+                  <input type="text" class="form-control" id="codebadge" name="codebadge" placeholder="Code Badge">
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-xs-2 control-label" for="avantage">Avantage</label>
+                <label class="col-xs-2 control-label">Avantage</label>
                 <div class="col-xs-6">
                   <div class="radio">
                     <label for="avantage-0">
@@ -185,7 +185,7 @@
               <div class="form-group">
                 <label for="adresse1liv" class="col-xs-2 control-label">Address Livraison</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="adresse1liv" placeholder="Address Livraison 1">
+                  <input type="text" class="form-control" id="adresse1liv" name="adresse1liv" placeholder="Address Livraison 1">
                   <input type="text" class="form-control" name="adresse2liv" placeholder="Address Livraison 2">
                 </div>
               </div>
@@ -205,7 +205,7 @@
               <div class="form-group">
                 <label for="adresse1fact" class="col-xs-2 control-label">Address Facturation</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" name="adresse1fact" placeholder="Address Facturation 1">
+                  <input type="text" class="form-control" id="adresse1fact" name="adresse1fact" placeholder="Address Facturation 1">
                   <input type="text" class="form-control" name="adresse2fact" placeholder="Address Facturation 2">
                 </div>
               </div>
