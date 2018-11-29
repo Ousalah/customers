@@ -25,8 +25,14 @@
           <div class="col-sm-6">
             <div class="zones">
               <div class="actions">
-                <button class="btn btn-success">Create</button>
-                <button class="btn btn-transparent btn-transparent-success">Import</button>
+                <div class="actions-view main-view">
+                  <button class="btn btn-success btn-create">Create</button>
+                  <button class="btn btn-transparent btn-transparent-success btn-import">Import</button>
+                </div>
+                <div class="actions-view add-view">
+                  <button class="btn btn-success btn-save">Save</button>
+                  <button class="btn btn-transparent btn-transparent-success btn-discard">Discard</button></div>
+                <div class="actions-view edit-view"></div>
               </div>
             </div>
           </div>

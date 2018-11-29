@@ -10,6 +10,21 @@ $(function () {
   });
   // end switch between list and grid view
 
+  // start
+  var $actionsView = (".zones .actions .actions-view");
+  $($actionsView + " .btn-create").on("click", function () {
+    $($actionsView).hide().siblings(".add-view").show();
+    $("._customers-view").hide();
+    $(".customers-add").show();
+  });
+
+  $($actionsView + " .btn-discard").on("click", function () {
+    $($actionsView).hide().siblings(".main-view").show();
+    $("._customers-view").hide().siblings(".customers-list").show();
+    $(".customers-add").hide();
+  });
+  // end
+
   // start add customer info
   function addCustomers() {
     $.ajax({
@@ -44,7 +59,7 @@ $(function () {
     });
   }
 
-  $(".zones .actions .btn-transparent").on("click", function () {
+  $(".zones .actions .add-view .btn-save").on("click", function () {
     addCustomers();
   });
   // end add customer info

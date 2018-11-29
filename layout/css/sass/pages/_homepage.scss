@@ -30,6 +30,14 @@
       position: absolute;
       right: 0;
     }
+    .actions {
+      .actions-view {
+        display: none;
+        &.main-view {
+          display: block;
+        }
+      }
+    }
     .navigations {
       .view-mode {
         i {
@@ -124,6 +132,7 @@
 
 // Start customers add
 .customers-add {
+  display: none;
   .form-add-customers {
     .main-form {
       .left-form {
