@@ -14,21 +14,24 @@
   .zones {
     height: 50px;
     min-height: 50px;
-    .main-breadcrumb, .search, button[type="submit"], .actions, .navigations {
+    .main-breadcrumb, .search-form, .actions, .navigations {
       @include vertical-center();
     }
-    .search {
-      border-width: 0 0 1px;
-      box-shadow: none;
-      border-radius: 0;
-      padding-right: 25px;
-      padding-left: 0;
-    }
-    button[type="submit"] {
-      background: transparent;
-      border: none;
-      position: absolute;
-      right: 0;
+    .search-form {
+      .search {
+        border-width: 0 0 1px;
+        box-shadow: none;
+        border-radius: 0;
+        padding-right: 25px;
+        padding-left: 0;
+      }
+      button[type="submit"] {
+        background: transparent;
+        border: none;
+        position: absolute;
+        right: 0;
+        top: 6px;
+      }
     }
     .actions {
       .actions-view {

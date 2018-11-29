@@ -117,7 +117,7 @@ body {
   height: 50px;
   min-height: 50px;
 }
-.main-header .zones .main-breadcrumb, .main-header .zones .search, .main-header .zones button[type=submit], .main-header .zones .actions, .main-header .zones .navigations {
+.main-header .zones .main-breadcrumb, .main-header .zones .search-form, .main-header .zones .actions, .main-header .zones .navigations {
   position: relative;
   display: block;
   top: 50%;
@@ -125,18 +125,19 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.main-header .zones .search {
+.main-header .zones .search-form .search {
   border-width: 0 0 1px;
   box-shadow: none;
   border-radius: 0;
   padding-right: 25px;
   padding-left: 0;
 }
-.main-header .zones button[type=submit] {
+.main-header .zones .search-form button[type=submit] {
   background: transparent;
   border: none;
   position: absolute;
   right: 0;
+  top: 6px;
 }
 .main-header .zones .actions .actions-view {
   display: none;

@@ -18,8 +18,10 @@
           </div>
           <div class="col-sm-6">
             <form class="zones form-horizontal" action="" method="get">
-              <input type="text" class="search form-control" placeholder="Search.." name="s">
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <div class="search-form">
+                <input type="text" class="search form-control" placeholder="Search.." name="s">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </div>
             </form>
           </div>
           <div class="col-sm-6">

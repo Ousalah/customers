@@ -16,12 +16,14 @@ $(function () {
     $($actionsView).hide().siblings(".add-view").show();
     $("._customers-view").hide();
     $(".customers-add").show();
+    $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
   });
 
   $($actionsView + " .btn-discard").on("click", function () {
     $($actionsView).hide().siblings(".main-view").show();
     $("._customers-view").hide().siblings(".customers-list").show();
     $(".customers-add").hide();
+    $(".main-header .zones .search-form, .main-header .zones .navigations").show();
   });
   // end
 
