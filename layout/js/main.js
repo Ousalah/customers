@@ -20,10 +20,16 @@ $(function () {
   });
 
   $($actionsView + " .btn-discard").on("click", function () {
+    // hide add view and show main view
     $($actionsView).hide().siblings(".main-view").show();
-    $("._customers-view").hide().siblings(".customers-list").show();
+    // show active customers-view
+    $("." + $(".main-header .navigations .view-mode i.active").data("class")).show().siblings("._customers-view").hide();
+    // hide customers add form
     $(".customers-add").hide();
+    // show navigations and form section
     $(".main-header .zones .search-form, .main-header .zones .navigations").show();
+    // reset form
+    $('.form-add-customers').trigger("reset");
   });
   // end
 
