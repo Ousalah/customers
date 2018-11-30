@@ -12,14 +12,7 @@ $(function () {
 
   // start
   var $actionsView = (".zones .actions .actions-view");
-  $($actionsView + " .btn-create").on("click", function () {
-    $($actionsView).hide().siblings(".add-view").show();
-    $("._customers-view").hide();
-    $(".customers-add").show();
-    $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
-  });
-
-  $($actionsView + " .btn-discard").on("click", function () {
+  function showMainView() {
     // hide add view and show main view
     $($actionsView).hide().siblings(".main-view").show();
     // show active customers-view
@@ -30,6 +23,17 @@ $(function () {
     $(".main-header .zones .search-form, .main-header .zones .navigations").show();
     // reset form
     $('.form-add-customers').trigger("reset");
+  }
+
+  $($actionsView + " .btn-create").on("click", function () {
+    $($actionsView).hide().siblings(".add-view").show();
+    $("._customers-view").hide();
+    $(".customers-add").show();
+    $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
+  });
+
+  $($actionsView + " .btn-discard").on("click", function () {
+    showMainView();
   });
   // end
 
@@ -38,7 +42,6 @@ $(function () {
     $.ajax({
       url: "controller/Customers.php",
       type: "POST",
-      dataType: "json",
       data: {
         a: "add",
         t: "Z_TEST_CLIENT",
@@ -49,21 +52,13 @@ $(function () {
     })
 
     .done(function(data) {
-      console.log("done : " + data.customerInfo);
-      for (var i in data.customerInfo) {
-        if (object.hasOwnProperty(i)) {
-          console.log(object);
-        }
-      }
+      console.log(data);
+      getCustomers();
+      showMainView();
     })
 
     .fail(function(data) {
       console.log("fail");
-      for (var i in data.customerInfo) {
-        if (object.hasOwnProperty(i)) {
-          console.log(object);
-        }
-      }
     });
   }
 
@@ -74,7 +69,17 @@ $(function () {
 
   // start datatables
   function datatablesInit() {
+    // destroy dataTable if is init
+    // if ($.fn.DataTable.isDataTable("#table-customers-list")) {
+    //   $('#table-customers-list').DataTable().destroy();
+    // }
+    // init dataTable
     $('#table-customers-list').DataTable({
+      destroy: true,
+      retrieve: true,
+      // stateSave: true,
+      // processing: true,
+      // serverSide: true,
       responsive: true,
       fixedHeader: true,
       paging: false,
@@ -98,7 +103,7 @@ $(function () {
       dataType: "json",
       data: {
         a: "get",
-        args: { table: "Z_TEST_CLIENT" },
+        args: { table: "Z_TEST_CLIENT", orderBy:'code_clt', orderType: 'DESC' },
       },
       beforeSend : function(){
         $('#table-customers-list thead').html("");

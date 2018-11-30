@@ -111,6 +111,9 @@
 
 // Start customers list
 .customers-list {
+  #table-customers-list_wrapper {
+    overflow: hidden;
+  }
   &.spinner {
     height: calc(100vh - 200px);
   }
