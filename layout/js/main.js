@@ -53,12 +53,14 @@ $(function () {
 
     .done(function(data) {
       console.log(data);
+      $('#table-customers-list').DataTable().destroy();
       getCustomers();
       showMainView();
+      console.log("success msg here");
     })
 
     .fail(function(data) {
-      console.log("fail");
+      console.log("fail msg here");
     });
   }
 
@@ -69,17 +71,8 @@ $(function () {
 
   // start datatables
   function datatablesInit() {
-    // destroy dataTable if is init
-    // if ($.fn.DataTable.isDataTable("#table-customers-list")) {
-    //   $('#table-customers-list').DataTable().destroy();
-    // }
-    // init dataTable
     $('#table-customers-list').DataTable({
-      destroy: true,
-      retrieve: true,
-      // stateSave: true,
-      // processing: true,
-      // serverSide: true,
+      stateSave: true,
       responsive: true,
       fixedHeader: true,
       paging: false,
@@ -92,6 +85,7 @@ $(function () {
         { responsivePriority: 5, targets: 24 },
         { responsivePriority: 2, targets: -1, orderable: false }
       ],
+      aaSorting: [0,'desc']
     });
   }
   // end datatables
