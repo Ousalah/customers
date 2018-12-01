@@ -30,6 +30,28 @@ $(function () {
     $("._customers-view").hide();
     $(".customers-add").show();
     $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
+    // start get the next client
+    $.ajax({
+      url: "controller/Customers.php",
+      type: "POST",
+      dataType: "json",
+      data: {
+        a: "nextid",
+        args: { table: "Z_TEST_CLIENT", primaryKey: 'code_clt' },
+      },
+    })
+
+    .done(function(data) {
+      console.log(data);
+      $(".form-add-customers input[name='code_clt']").val(data);
+      console.log("success msg here");
+    })
+
+    .fail(function(data) {
+      console.log(data);
+      console.log("fail msg here");
+    });
+    // end get the next client
   });
 
   $($actionsView + " .btn-discard").on("click", function () {

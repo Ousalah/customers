@@ -27,6 +27,10 @@ switch ($a) {
 		echo json_encode($data);
 		break;
 
+	case 'nextid':
+		echo json_encode(Customers::nextid($args["table"], $args["primaryKey"]));
+		break;
+
 	default:
 		header("location:../index.php");
 		break;
