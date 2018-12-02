@@ -112,6 +112,7 @@ $(function () {
   }
   // end datatables
 
+  // start get customers
   function getCustomers() {
     $.ajax({
       url: "controller/Customers.php",
@@ -119,21 +120,24 @@ $(function () {
       dataType: "json",
       data: {
         a: "get",
-        args: { table: "Z_TEST_CLIENT", orderBy:'code_clt', orderType: 'DESC' },
+        getColumnsArgs: { table: "Z_TEST_CLIENT" },
+        countArgs: { fields: "count(code_clt)", table: "Z_TEST_CLIENT" },
       },
       beforeSend : function(){
-        $('#table-customers-list thead').html("");
-        $('#table-customers-list tbody').html("");
         $('.customers-list').addClass('spinner');
-        // $('.customers-grid').html("");
         $('.customers-grid').addClass('spinner');
-
       }
     })
 
     .done(function(data) {
       $('.customers-list').removeClass('spinner');
       $('.customers-grid').removeClass('spinner');
+
+      // start show count info
+      $('.main-header .zones .navigations .customers-count-min').html(data.countinfo.min);
+      $('.main-header .zones .navigations .customers-count-max').html(data.countinfo.max);
+      $('.main-header .zones .navigations .customers-count-total').html(data.countinfo.count);
+      // end show count info
 
       var thead = "<tr>";
       for (var c in data.column) {
@@ -191,6 +195,8 @@ $(function () {
 
   // onload get customers
   getCustomers();
+  // end get customers
+
 
   // on click retry button get customers
   $(".retry-btn").on("click", function() {

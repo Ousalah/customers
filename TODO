@@ -1,9 +1,15 @@
 TODO
 code_badge name check
 avantage name check
+pagination
+edit
+searching
+form validation
+DataTable fix overflow (display none to block)
+
 
 ------
-code clt (reference) *
+code clt (reference) * unique and generated
 client * unique
 tel *
 fax

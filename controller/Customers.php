@@ -9,7 +9,6 @@ switch ($a) {
 		$customerInfo = array();
 		parse_str($_POST['customerInfo'], $customerInfo);
 		Customers::insert($_POST["t"], $customerInfo);
-		// Customers::set_val_session("notice", "The addition was <strong>successfully</strong> completed.");
 		break;
 
 	case 'get':
@@ -17,13 +16,21 @@ switch ($a) {
 		$columns = array();
 
 		// get only column name
-		foreach (Customers::getColumns($args["table"]) as $field) {
+		foreach (Customers::getColumns($getColumnsArgs["table"]) as $field) {
 			$columns[] = $field->COLUMN_NAME;
 		}
 
 		// assign columnNames and customer data to $data
 		$data["column"] = $columns;
-		$data["customer"] = Customers::get($args);
+		// get customers with pagination
+		$data["customer"] = Customers::getPaginatedCustomers(2, 25);
+		// get columns count
+		$data["countinfo"] = array(
+			'count' => count(Customers::get($countArgs)),
+			'min'   => $data["customer"][0]->RowNum,
+			'max'   => end($data["customer"])->RowNum
+		);
+
 		echo json_encode($data);
 		break;
 

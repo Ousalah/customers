@@ -42,7 +42,8 @@
             <div class="zones">
               <div class="navigations">
                 <span class="pull-left">
-                  1-10/50
+                  <span class="customers-count-min">0</span>-<span class="customers-count-max">0</span> /
+                  <span class="customers-count-total">0</span>
                   <i class="fa fa-chevron-left" aria-hidden="true"></i>
                   <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </span>

@@ -26,5 +26,14 @@ class Customers extends Utils {
     return $id;
   }
 
+  public static function getPaginatedCustomers($pageNumber = 1, $perPage =  50) {
+    $cnx  = Utils::connect_db();
+    $stmt = $cnx->prepare("SELECT TOP $perPage * FROM (SELECT ROW_NUMBER() OVER (ORDER BY code_clt) AS RowNum, *
+            FROM Z_TEST_CLIENT) AS RowConstrainedResult
+            WHERE RowNum > ($perPage * ($pageNumber - 1)) ORDER BY code_clt");
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+
 }
 ?>
