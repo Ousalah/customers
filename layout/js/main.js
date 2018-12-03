@@ -113,7 +113,7 @@ $(function () {
   // end datatables
 
   // start get customers
-  function getCustomers() {
+  function getCustomers(page = 1, perPage =  10) {
     $.ajax({
       url: "controller/Customers.php",
       type: "POST",
@@ -122,6 +122,7 @@ $(function () {
         a: "get",
         getColumnsArgs: { table: "Z_TEST_CLIENT" },
         countArgs: { fields: "count(code_clt)", table: "Z_TEST_CLIENT" },
+        page: {currentPage: page, perPage: perPage},
       },
       beforeSend : function(){
         $('.customers-list').addClass('spinner');
@@ -134,9 +135,15 @@ $(function () {
       $('.customers-grid').removeClass('spinner');
 
       // start show count info
-      $('.main-header .zones .navigations .customers-count-min').html(data.countinfo.min);
-      $('.main-header .zones .navigations .customers-count-max').html(data.countinfo.max);
-      $('.main-header .zones .navigations .customers-count-total').html(data.countinfo.count);
+      $('.main-header .zones .navigations .customers-count-min').html(data.pagination.min);
+      $('.main-header .zones .navigations .customers-count-max').html(data.pagination.max);
+      $('.main-header .zones .navigations .customers-count-total').html(data.pagination.count);
+
+      $('.main-header .zones .navigations .pagination-first').attr("data-page", data.pagination.first);
+      $('.main-header .zones .navigations .pagination-prev').attr("data-page", data.pagination.prev);
+      $('.main-header .zones .navigations .pagination-current').val(data.pagination.current);
+      $('.main-header .zones .navigations .pagination-next').attr("data-page", data.pagination.next);
+      $('.main-header .zones .navigations .pagination-last').attr("data-page", data.pagination.last);
       // end show count info
 
       var thead = "<tr>";
@@ -197,12 +204,25 @@ $(function () {
   getCustomers();
   // end get customers
 
+  // on click in pagination buttons
+  $(".paginations").on("click", function () {
+    $('#table-customers-list').DataTable().destroy();
+    getCustomers($(this).attr("data-page"));
+  });
+
+  // go to page
+  $(".pagination-current").keyup(function () {
+    $('#table-customers-list').DataTable().destroy();
+    getCustomers($(this).val());
+  });
+
+
 
   // on click retry button get customers
   $(".retry-btn").on("click", function() {
     $('.customers-list .retry-btn').hide();
     $('.customers-grid .retry-btn').hide();
-    getCustomers();
+    getCustomers($(".pagination-current").val());
   });
 
 });

@@ -44,8 +44,13 @@
                 <span class="pull-left">
                   <span class="customers-count-min">0</span>-<span class="customers-count-max">0</span> /
                   <span class="customers-count-total">0</span>
-                  <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </span>
+                <span class="paginations-buttons">
+                  <i class="fa fa-backward paginations pagination-first" data-page="1" aria-hidden="true"></i>
+                  <i class="fa fa-chevron-left paginations pagination-prev" data-page="1" aria-hidden="true"></i>
+                  <input type="text" class="btn-xs pagination-current" data-page="1" value="1">
+                  <i class="fa fa-chevron-right paginations pagination-next" data-page="1" aria-hidden="true"></i>
+                  <i class="fa fa-forward paginations pagination-last" data-page="1" aria-hidden="true"></i>
                 </span>
                 <span class="pull-right view-mode">
                   <i class="fa fa-th-list list-view active" data-class="customers-list" aria-hidden="true"></i>

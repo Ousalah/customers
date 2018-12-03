@@ -6,6 +6,9 @@ edit
 searching
 form validation
 DataTable fix overflow (display none to block)
+dataTable fix loadin (spinner class) on pagination
+block click on pagination buttons if it has the limit value [first, last]
+fix go to page input event and validation (allow only int value)
 
 
 ------

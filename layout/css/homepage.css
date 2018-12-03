@@ -145,6 +145,25 @@ body {
 .main-header .zones .actions .actions-view.main-view {
   display: block;
 }
+.main-header .zones .navigations .paginations-buttons {
+  position: absolute;
+  left: 35%;
+}
+.main-header .zones .navigations .paginations-buttons .paginations {
+  cursor: pointer;
+  padding: 5px 8px;
+}
+.main-header .zones .navigations .paginations-buttons .paginations:hover {
+  background-color: #e5e5e5;
+}
+.main-header .zones .navigations .paginations-buttons .pagination-current {
+  width: 30px;
+  text-align: center;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding-left: 0;
+}
 .main-header .zones .navigations .view-mode i {
   padding: 5px 8px;
   cursor: pointer;
