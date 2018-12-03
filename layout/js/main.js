@@ -8,6 +8,10 @@ $(function () {
       $("." + $(this).data("class")).fadeIn().siblings("._customers-view").hide();
     }
   });
+  $(".main-header .navigations .view-mode i[data-class='customers-list']").on("click", function () {
+    $('#table-customers-list').DataTable().destroy();
+    datatablesInit();
+  });
   // end switch between list and grid view
 
   // start
