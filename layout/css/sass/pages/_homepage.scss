@@ -83,6 +83,9 @@
   display: none;
   &.spinner {
     height: calc(100vh - 200px);
+    .customer-grid {
+      display: none;
+    }
   }
   .retry-btn {
     position: relative;
@@ -135,6 +138,9 @@
   }
   &.spinner {
     height: calc(100vh - 200px);
+    table {
+      display: none;
+    }
   }
   .retry-btn {
     position: relative;

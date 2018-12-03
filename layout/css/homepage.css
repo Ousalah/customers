@@ -181,6 +181,9 @@ body {
 .customers-grid.spinner {
   height: calc(100vh - 200px);
 }
+.customers-grid.spinner .customer-grid {
+  display: none;
+}
 .customers-grid .retry-btn {
   position: relative;
   height: calc(100vh - 200px);
@@ -226,6 +229,9 @@ body {
 }
 .customers-list.spinner {
   height: calc(100vh - 200px);
+}
+.customers-list.spinner table {
+  display: none;
 }
 .customers-list .retry-btn {
   position: relative;
