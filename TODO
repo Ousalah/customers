@@ -1,6 +1,4 @@
 TODO
-code_badge name check
-avantage name check
 pagination   										=> DONE
 edit
 searching
@@ -10,6 +8,7 @@ dataTable fix loading (spinner class) on pagination  => DONE
 block click on pagination buttons if it has the limit value [first, last]
 fix go to page input event and validation (allow only int value)
 fix sorting in dataTable (we have sorting only in the current page)
+breadcrumb
 
 
 ------

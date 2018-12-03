@@ -37,6 +37,13 @@
   color: #398439;
 }
 
+.btn-prevent-click {
+  cursor: not-allowed !important;
+}
+.btn-prevent-click:hover {
+  background-color: transparent !important;
+}
+
 @-webkit-keyframes spinner {
   to {
     transform: rotate(360deg);

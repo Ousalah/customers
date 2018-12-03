@@ -145,7 +145,7 @@ $(function () {
 
       $('.main-header .zones .navigations .pagination-first').attr("data-page", data.pagination.first);
       $('.main-header .zones .navigations .pagination-prev').attr("data-page", data.pagination.prev);
-      $('.main-header .zones .navigations .pagination-current').val(data.pagination.current);
+      $('.main-header .zones .navigations .pagination-current').attr("value", data.pagination.current);
       $('.main-header .zones .navigations .pagination-next').attr("data-page", data.pagination.next);
       $('.main-header .zones .navigations .pagination-last').attr("data-page", data.pagination.last);
       // end show count info
@@ -210,16 +210,21 @@ $(function () {
 
   // on click in pagination buttons
   $(".paginations").on("click", function () {
-    $('#table-customers-list').DataTable().destroy();
-    getCustomers($(this).attr("data-page"));
+    if (! $(this).hasClass("btn-prevent-click")) {
+      $('#table-customers-list').DataTable().destroy();
+      getCustomers($(this).attr("data-page"));
+
+      // $(".paginations").each(function () {
+        // console.log("--" + $(this).attr("class") + " : " + $(this).attr("data-page"));
+      // });
+    }
   });
 
   // go to page
-  $(".pagination-current").keyup(function () {
+  $(".pagination-current").on("change", function () {
     $('#table-customers-list').DataTable().destroy();
     getCustomers($(this).val());
   });
-
 
 
   // on click retry button get customers

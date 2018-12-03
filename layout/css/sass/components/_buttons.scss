@@ -16,3 +16,10 @@
 .btn-transparent-success {
   color: #398439;
 }
+
+.btn-prevent-click {
+  cursor: not-allowed !important;
+  &:hover {
+    background-color: transparent !important;
+  }
+}
