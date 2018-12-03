@@ -113,7 +113,7 @@ $(function () {
   // end datatables
 
   // start get customers
-  function getCustomers(page = 1, perPage =  10) {
+  function getCustomers(page = 1, perPage =  25) {
     $.ajax({
       url: "controller/Customers.php",
       type: "POST",
@@ -121,7 +121,7 @@ $(function () {
       data: {
         a: "get",
         getColumnsArgs: { table: "Z_TEST_CLIENT" },
-        countArgs: { fields: "count(code_clt)", table: "Z_TEST_CLIENT" },
+        countArgs: { fields: ["count(code_clt)"], table: "Z_TEST_CLIENT" },
         page: {currentPage: page, perPage: perPage},
       },
       beforeSend : function(){

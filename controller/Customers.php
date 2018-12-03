@@ -16,7 +16,7 @@ switch ($a) {
 		$columns = array();
 
 		// get customers count
-		$count = count(Customers::get($countArgs));
+		$count = Customers::get($countArgs, "fetchColumn");
 		// get last page value
 		$lastPage = ceil($count / $page["perPage"]);
 
