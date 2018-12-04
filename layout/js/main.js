@@ -80,7 +80,7 @@ $(function () {
     .done(function(data) {
       console.log(data);
       $('#table-customers-list').DataTable().destroy();
-      getCustomers();
+      getCustomers($(".pagination-current").val());
       showMainView();
       console.log("success msg here");
     })
