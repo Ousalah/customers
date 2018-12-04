@@ -48,7 +48,7 @@
                 <span class="paginations-buttons">
                   <i class="fa fa-backward paginations pagination-first" data-page="1" aria-hidden="true"></i>
                   <i class="fa fa-chevron-left paginations pagination-prev" data-page="1" aria-hidden="true"></i>
-                  <input type="text" class="btn-xs pagination-current" value="1">
+                  <input type="text" class="btn-xs pagination-current" data-page="1" value="1">
                   <i class="fa fa-chevron-right paginations pagination-next" data-page="1" aria-hidden="true"></i>
                   <i class="fa fa-forward paginations pagination-last" data-page="1" aria-hidden="true"></i>
                 </span>

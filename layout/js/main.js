@@ -145,10 +145,20 @@ $(function () {
 
       $('.main-header .zones .navigations .pagination-first').attr("data-page", data.pagination.first);
       $('.main-header .zones .navigations .pagination-prev').attr("data-page", data.pagination.prev);
-      $('.main-header .zones .navigations .pagination-current').attr("value", data.pagination.current);
+      $('.main-header .zones .navigations .pagination-current').val(data.pagination.current).attr("data-page", data.pagination.next);
       $('.main-header .zones .navigations .pagination-next').attr("data-page", data.pagination.next);
       $('.main-header .zones .navigations .pagination-last').attr("data-page", data.pagination.last);
       // end show count info
+
+      // start prevent click on pagination buttons
+      $(".paginations").each(function () {
+        if ($(this).attr("data-page") == $(".pagination-current").val()) {
+          $(this).addClass("btn-prevent-click");
+        } else {
+          $(this).removeClass("btn-prevent-click");
+        }
+      });
+      // end prevent click on pagination buttons
 
       var thead = "<tr>";
       for (var c in data.column) {
@@ -213,10 +223,6 @@ $(function () {
     if (! $(this).hasClass("btn-prevent-click")) {
       $('#table-customers-list').DataTable().destroy();
       getCustomers($(this).attr("data-page"));
-
-      // $(".paginations").each(function () {
-        // console.log("--" + $(this).attr("class") + " : " + $(this).attr("data-page"));
-      // });
     }
   });
 
