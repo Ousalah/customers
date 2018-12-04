@@ -46,7 +46,6 @@ $(function () {
     })
 
     .done(function(data) {
-      console.log(data);
       $(".form-add-customers input[name='code_clt']").val(data);
       console.log("success msg here");
     })
@@ -62,6 +61,42 @@ $(function () {
     showMainView();
   });
   // end
+
+  // start form validation
+  function isExist(field, value) {
+    //
+    $.ajax({
+      url: "controller/Customers.php",
+      type: "POST",
+      data: {
+        a: "check",
+        args: {
+          fields: [field],
+          table: "Z_TEST_CLIENT",
+          conditions: [{key: field, operator: = '=', value: value}],
+          checkExist: true,
+        },
+      },
+    })
+
+    .done(function(data) {
+      console.log(data);
+    })
+
+    .fail(function(data) {
+      console.log("check fail msg here");
+    });
+    //
+  }
+  function formValidation() {
+    var isValide = true;
+    $(".form-add-customers input[name='code_clt']").change(function () {
+      var codeClt = $(this).val()
+      console.log(codeClt.lenght());
+    });
+  }
+  formValidation();
+  // end form validation
 
   // start add customer info
   function addCustomers() {

@@ -158,17 +158,6 @@ class Utils
 
 	}
 
-	public static function get_all($table, $order = false) {
-
-		$cnx=Utils::connect_db();
-		$sql = "select * from $table";
-		if ($order) $sql .= " order by id desc";
-		// "select * from $table	order by id desc"
-		$pr=$cnx->prepare( $sql );
-		$pr->execute();
-
-		return $pr->fetchAll(PDO::FETCH_OBJ);
-	}
 
 	/*
 	** Get all fuction v2.2
@@ -192,6 +181,7 @@ class Utils
 	** @param $params["orderBy"]    = field to use it in the ordering - (optional) (default = "")
 	** @param $params["orderType"]  = type of ordering - (optional) (default = "DESC") {options = "DESC", "ASC", "RAND()"}
 	** @param $params["limit"]      = number of records to get - (optional) (default = "")
+	** @param $params["checkExist"] = false to retrieve data, and true to check only extension - (optional) (default = false)
 	** @param $fetch                = type of fetch (optional) (default = "fetchAll") {options = "fetchAll", "fetch"}
 	** @return records
 	*/
@@ -202,7 +192,8 @@ class Utils
 		"conditions"  => array(array('key' => "", "operator" => "=", "value" => "")),
 		"orderBy"     => "",
 		"orderType"   => 'DESC',
-		"limit"       => null
+		"limit"       => null,
+		"checkExist"	=> false,
 	), $fetch = "fetchAll") {
 
 		$cnx = Utils::connect_db();
@@ -214,6 +205,7 @@ class Utils
 			$params['orderBy']     = (isset($params['orderBy'])) ? $params['orderBy']: "";
 			$params['orderType']   = (isset($params['orderType'])) ? strtoupper($params['orderType']): 'DESC';
 			$params['limit']       = (isset($params['limit'])) ? 'LIMIT ' . $params['limit']: null;
+			$params['checkExist']  = (isset($params['checkExist'])) ? $params['checkExist'] : false;
 
 			// Start fields part
 			$params['fields'] = (!empty($params['fields']) && is_array($params['fields'])) ? implode(", ", $params['fields']) : '*';
@@ -297,81 +289,50 @@ class Utils
 
 			$stmt = $cnx->prepare("SELECT {$params['fields']} FROM {$params['table']} {$joins} {$where} {$params['orderBy']} {$params['orderType']} {$params['limit']}");
 			$stmt->execute($values);
-			if ($fetch === "fetch") { return $stmt->fetch(); }
-			elseif ($fetch === "fetchColumn") { return $stmt->fetchColumn(); }
-			else { return $stmt->fetchAll(); }
+
+			// if checkExist == true, then chekc only existence, else retrieve data
+			if ($params['checkExist']) :
+				return ($stmt->rowCount()) ? true : false;
+			else :
+				if ($fetch === "fetch") { return $stmt->fetch(); }
+				elseif ($fetch === "fetchColumn") { return $stmt->fetchColumn(); }
+				else { return $stmt->fetchAll(); }
+			endif;
 
 		} else {
 			return array();
 		}
 	}
 
-	public static function getAll_noOrderBy($table) {
-		$cnx=Utils::connect_db();
-		$pr=$cnx->prepare("select * from $table");
-		$pr->execute();
-
-		return $pr->fetchAll(PDO::FETCH_OBJ);
-	}
-
-	public static function get_by($table, $data=array(), $limit = 0)
-	{
-		$names=array();
-		$values=array();
-
-		// limiter nombre de resultats,
-		if($limit > 0) $limit = "LIMIT $limit";
-		else $limit = "";
-
-		foreach ($data as $key => $value) {
-			$names[]="$key=?";
-			$values[]=$value;
-
-		}
-		$namesdb=implode(" and ", $names);
-		$cnx=Utils::connect_db();
-		$pr=$cnx->prepare("select * from $table
-			where $namesdb order by id desc
-			");
-		$pr->execute($values);
-		return $pr->fetchAll(PDO::FETCH_OBJ);
-	}
-
-
-	public static function set_value($nom)
-	{
+	public static function set_value($name) {
 		session_regenerate_id();
-		if(!empty($_POST[$nom]))
+		if(!empty($_POST[$name]))
 		{
-			//setcookie($nom, $_POST[$nom], time()+60);
+			//setcookie($name, $_POST[$name], time()+60);
 			if(isset($_SESSION)){
-				$_SESSION[$nom] = $_POST[$nom];
+				$_SESSION[$name] = $_POST[$name];
 			}
 		}
 
-		if(!empty($_SESSION[$nom])){
-			echo $_SESSION[$nom];
+		if(!empty($_SESSION[$name])){
+			echo $_SESSION[$name];
 		}
-
 	}
 
-	public static function creer_session()
-	{
+	public static function creer_session() {
 		if(!isset($_SESSION))
 		session_start();
 		session_regenerate_id(TRUE);
 
 	}
 
-	public static function set_val_session($notice_name, $notice_value)
-	{
+	public static function set_val_session($notice_name, $notice_value) {
 		self::creer_session();
 	 	$_SESSION[$notice_name] = $notice_value;
 
 	}
 
-	public static  function get_notice($notice_name)
-	{
+	public static  function get_notice($notice_name) {
 
 		//self::creer_session();
 		if(isset($_SESSION[$notice_name])){
@@ -381,66 +342,6 @@ class Utils
 		}else{
 			return "";
 		}
-
-	}
-
-
-	/**
-	* get random result
-	* @param $table : table name
-	* @param $limit : numbre max of results
-	**/
-	public static function get_all_random($table, $limit = 0)
-	{
-		// limiter nombre de resultats,
-		if($limit > 0) $limit = "LIMIT $limit";
-		else $limit = "";
-
-		$cnx=Utils::connect_db();
-		$pr=$cnx->prepare("select * from $table
-			ORDER BY RAND() $limit");
-
-		$pr->execute();
-		return $pr->fetchAll(PDO::FETCH_OBJ);
-	}
-
-
-
-	/**
-	* @param $table : table name
-	* @param $conditions : array of conditions = array("etat" => "en cours");
-	* @param $atrCount : counted attributer
-	**/
-	public static function get_count(
-			$table,
-			$conditions = array(),
-			$atrCount = "id"
-		)
-	{
-
-		$WHERE = "";
-		$names = array();
-		$values = array();
-
-		if($conditions != array()){
-			$WHERE = " WHERE ";
-
-			foreach ($conditions as $key => $value) {
-				$names[] = "$key = ?";
-				$values[] = $value;
-			}
-
-
-		}
-
-		$namesdb=implode(" and ", $names);
-		$cnx=Utils::connect_db();
-		$pr=$cnx->prepare("SELECT COUNT(*) FROM $table
-			$WHERE $namesdb");
-		//var_dump($pr);
-
-		$pr->execute($values);
-		return $pr->fetchColumn();
 	}
 
 
@@ -448,10 +349,8 @@ class Utils
 	 * @param $input : the value to show with break line
 	 * @param $die : if this variable is true then die
 	 */
-	public static function echo_inline($input = '', $die = false)
-	{
+	public static function echo_inline($input = '', $die = false) {
 		echo "<br>" . $input . "<br>";
-
 		($die) ? die() : '' ;
 	}
 
@@ -462,11 +361,9 @@ class Utils
 	 * @param $heading : the title of each comparison
 	 * @param $die : if this variable is true then die
 	 */
-	public static function echo_inline_comparaison($input = '', $input2 = '', $heading = '', $die = false)
-	{
+	public static function echo_inline_comparaison($input = '', $input2 = '', $heading = '', $die = false) {
 		echo $title = ($heading) ? "<br>" . $heading : "" ;
 		echo "<br>" . $input . " -- " . $input2 ."<br>";
-
 		($die) ? die() : '' ;
 	}
 
@@ -475,8 +372,7 @@ class Utils
 	 * @param $input : the value to show with <pre> HTML tag
 	 * @param $die : if this variable is true then die
 	 */
-	public static function var_dump_pre($input = '', $die = false)
-	{
+	public static function var_dump_pre($input = '', $die = false) {
 		echo "<pre>";
 		var_dump($input);
 		echo "</pre>";
@@ -488,8 +384,7 @@ class Utils
 	/**
 	 * @return True if ajax used
 	 */
-	public static function isAjax()
-	{
+	public static function isAjax() {
 		return (isset($_SERVER["HTTP_X_REQUESTED_WITH"])) && ($_SERVER["HTTP_X_REQUESTED_WITH"] == 'XMLHttpRequest');
 	}
 

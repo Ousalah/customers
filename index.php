@@ -75,22 +75,25 @@
             <!--  start lef form -->
             <div class="col-md-6">
               <div class="left-form">
-                <div class="form-group">
+                <div class="form-group has-feedback">
                   <label class="col-xs-2 control-label">Ref</label>
                   <div class="col-xs-4">
                     <input type="text" class="form-control" name="code_clt" placeholder="0123456" value="0000210" readonly>
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group has-feedback">
                   <label for="client" class="col-xs-2 control-label">Client</label>
                   <div class="col-xs-9">
                     <input type="text" class="form-control" id="client" name="client" placeholder="Client Name">
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group has-feedback">
                   <label for="e_mail" class="col-xs-2 control-label">Email</label>
                   <div class="col-xs-9">
                     <input type="text" class="form-control" id="e_mail" name="e_mail" placeholder="name@mail.com">
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
               </div>
@@ -100,22 +103,25 @@
             <!-- start right form -->
             <div class="col-md-6">
               <div class="right-form">
-                <div class="form-group">
+                <div class="form-group has-feedback">
                   <label for="tel" class="col-xs-2 control-label">Phone</label>
                   <div class="col-xs-9">
                     <input type="tel" class="form-control" id="tel" name="tel" placeholder="0612345678">
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group has-feedback">
                   <label for="fax" class="col-xs-2 control-label">Fax</label>
                   <div class="col-xs-9">
                     <input type="tel" class="form-control" id="fax" name="fax" placeholder="0522000000">
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group has-feedback">
                   <label for="mobile" class="col-xs-2 control-label">Mobile</label>
                   <div class="col-xs-9">
                     <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="0612345678">
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
               </div>
@@ -154,10 +160,11 @@
           <div class="tab-content">
             <!-- start fidelity management -->
             <div class="tab-pane active" id="fidelity-management" role="tabpanel">
-              <div class="form-group">
+              <div class="form-group has-feedback">
                 <label for="codebadge" class="col-xs-2 control-label">Code Badge</label>
                 <div class="col-xs-4">
                   <input type="text" class="form-control" id="codebadge" name="codebadge" placeholder="Code Badge">
+                  <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>
               <div class="form-group">

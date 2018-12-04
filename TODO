@@ -9,6 +9,7 @@ searching
 form validation
 fix sorting in dataTable (we have sorting only in the current page)
 breadcrumb
+notification msg (success, error, ...) after crud
 
 
 ------
