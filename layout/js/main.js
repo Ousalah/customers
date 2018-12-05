@@ -42,8 +42,24 @@ $(function () {
     })
 
     .done(function(data) {
-      $(".form-add-customers input[name='code_clt']").val(data);
-      console.log("success msg here");
+      var $codeClt = $(".form-add-customers input[name='code_clt']");
+      var $parent  = $codeClt.closest(".form-add-customers .form-group.has-feedback");
+
+      $codeClt.attr('value', data);
+      var $codeCltVal = $codeClt.val();
+
+      if ($codeCltVal) {
+        var isFound = isExist('code_clt', $codeCltVal);
+        if (isFound) {
+          resetFormDefaultClass($parent);
+          $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+        } else {
+          resetFormDefaultClass($parent);
+          $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
+        }
+      }
+
+      console.log("success msg here ");
     })
 
     .fail(function(data) {
@@ -61,7 +77,11 @@ $(function () {
     $(".customers-add").show();
     $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
 
-    getNextId();
+    var $codeCltVal = $(".form-add-customers input[name='code_clt']").attr('value');
+    if (!$codeCltVal) {
+      getNextId();
+    }
+    isEmptyRequiredFields();
   });
 
   $($actionsView + " .btn-discard").on("click", function () {
@@ -94,46 +114,74 @@ $(function () {
   }
   // end function to check existense
 
-  // start form validation, retun true if has no error in the form
-  function isformValid() {
-    var hasError = {};
+  // start reset form class to default
+  function resetFormDefaultClass($this) {
+    $this.removeClass("has-warning has-success has-error").find('span.form-control-feedback')
+    .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
+  }
+  // end reset form class to default
+
+  // start check if required fields is empty or not
+  function isEmptyRequiredFields($singleField = "") {
     $(".form-add-customers .form-group.has-feedback").each(function () {
-      var $this = $(this);
-      var $field = $this.find('input');
+      var $this      = $singleField ? $singleField : $(this);
+      var $field     = $this.find('input');
       var $fieldName = $field.attr('name');
-      var $fieldVal = $.trim($field.attr('value'));
+      var $fieldVal  = $.trim($field.val());
 
-      function resetDefaultClass() {
-        $this.removeClass("has-warning has-success has-error").find('span.form-control-feedback')
-        .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
-      }
-
-      // init array of errors, by default has no error (false)
-      hasError[$fieldName] = false;
-
-      function isEmptyRequiredFields() {
-        // check if has empty value, only ('code_clt', 'client', 'tel')
-        resetDefaultClass();
-        if (!$fieldVal && $.inArray($fieldName, ['client', 'tel']) !== -1) {
-          hasError[$fieldName] = true;
+      // check if has empty value, only ('code_clt', 'client', 'tel')
+      if ($.inArray($fieldName, ['code_clt', 'client', 'tel']) !== -1) {
+        if (!$fieldVal) {
+          resetFormDefaultClass($this);
           $this.addClass("has-warning").find('span.form-control-feedback').addClass("glyphicon-warning-sign");
         } else {
+          if (!$this.hasClass("has-success")) {
+            resetFormDefaultClass($this);
+          }
           $this.removeClass("has-warning").find('span.form-control-feedback').removeClass("glyphicon-warning-sign");
-          hasError[$fieldName] = false;
         }
       }
-      isEmptyRequiredFields();
+    });
+  }
+  // end check if required fields is empty or not
 
-      $field.on("change", function () {
-        hasError[$fieldName] = isExist($fieldName, $field.val());
-        console.log("on change");
-        console.log(hasError);
-      }).on("focus", function () {
-        resetDefaultClass();
-      }).on("focusout", function () {
-        isEmptyRequiredFields();
-      });
-      console.log(hasError);
+  // start form validation
+  function isformValid() {
+    $(".form-add-customers .form-group.has-feedback input").on('input focus blur', function (e) {
+      var $field     = $(this);
+      var $parent    = $field.closest(".form-add-customers .form-group.has-feedback");
+      var $fieldName = $field.attr('name');
+      var $fieldVal  = $.trim($field.val());
+      var isFound    = false;
+      console.log(e.type + " " + $fieldName);
+
+      if (e.type == "input" || e.type == "blur") {
+
+        // show warning if required fields was empty
+        isEmptyRequiredFields($parent);
+
+        //
+        if ($fieldVal) {
+          console.log("no empty : " + $fieldName + " : " + $fieldVal);
+          isFound = isExist($fieldName, $fieldVal);
+          console.log($fieldName + " " + isFound);
+          if (isFound) {
+            resetFormDefaultClass($parent);
+            $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+          } else {
+            resetFormDefaultClass($parent);
+            $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
+          }
+        }
+        //
+
+      } else if (e.type == "focus") {
+
+        if (!$parent.hasClass("has-success")) {
+          resetFormDefaultClass($parent);
+        }
+
+      }
     });
   }
   isformValid();
