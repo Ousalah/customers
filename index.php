@@ -78,7 +78,7 @@
                 <div class="form-group has-feedback">
                   <label class="col-xs-2 control-label">Ref</label>
                   <div class="col-xs-4">
-                    <input type="text" class="form-control" name="code_clt" placeholder="0123456" value="0000210" readonly>
+                    <input type="text" class="form-control" name="code_clt" placeholder="0123456" readonly>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>

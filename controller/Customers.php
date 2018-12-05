@@ -61,14 +61,7 @@ switch ($a) {
 		break;
 
 	case 'check':
-		$args = array(
-			'table' => 'Z_TEST_CLIENT',
-			'fields' => array('code_clt'),
-			"conditions" => array(array('key' => "code_clt", "operator" => "=", "value" => "0010055")),
-			"checkExist" => true,
-		);
-		var_dump(Customers::get($args));
-		// echo json_encode(Customers::get($args));
+		echo json_encode(Customers::get($args));
 		break;
 
 	default:

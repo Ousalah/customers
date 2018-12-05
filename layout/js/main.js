@@ -29,12 +29,8 @@ $(function () {
     $('.form-add-customers').trigger("reset");
   }
 
-  $($actionsView + " .btn-create").on("click", function () {
-    $($actionsView).hide().siblings(".add-view").show();
-    $("._customers-view").hide();
-    $(".customers-add").show();
-    $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
-    // start get the next client
+  // start get the next client
+  function getNextId() {
     $.ajax({
       url: "controller/Customers.php",
       type: "POST",
@@ -54,7 +50,18 @@ $(function () {
       console.log(data);
       console.log("fail msg here");
     });
-    // end get the next client
+  }
+  // call on onload
+  getNextId();
+  // end get the next client
+
+  $($actionsView + " .btn-create").on("click", function () {
+    $($actionsView).hide().siblings(".add-view").show();
+    $("._customers-view").hide();
+    $(".customers-add").show();
+    $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
+
+    getNextId();
   });
 
   $($actionsView + " .btn-discard").on("click", function () {
@@ -62,40 +69,74 @@ $(function () {
   });
   // end
 
-  // start form validation
+  // start function to check existense
   function isExist(field, value) {
-    //
+    var output = true;
     $.ajax({
+      async: false,
       url: "controller/Customers.php",
       type: "POST",
+      dataType: 'json',
       data: {
         a: "check",
         args: {
           fields: [field],
           table: "Z_TEST_CLIENT",
-          conditions: [{key: field, operator: = '=', value: value}],
+          conditions: [{key: field, operator: '=', value: value}],
           checkExist: true,
         },
       },
     })
+    .done(function(data) { output = data; })
+    .fail(function(data) { console.log("check fail msg here"); });
 
-    .done(function(data) {
-      console.log(data);
-    })
+    return output;
+  }
+  // end function to check existense
 
-    .fail(function(data) {
-      console.log("check fail msg here");
+  // start form validation, retun true if has no error in the form
+  function isformValid() {
+    var hasError = {};
+    $(".form-add-customers .form-group.has-feedback").each(function () {
+      var $this = $(this);
+      var $field = $this.find('input');
+      var $fieldName = $field.attr('name');
+      var $fieldVal = $.trim($field.attr('value'));
+
+      function resetDefaultClass() {
+        $this.removeClass("has-warning has-success has-error").find('span.form-control-feedback')
+        .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
+      }
+
+      // init array of errors, by default has no error (false)
+      hasError[$fieldName] = false;
+
+      function isEmptyRequiredFields() {
+        // check if has empty value, only ('code_clt', 'client', 'tel')
+        resetDefaultClass();
+        if (!$fieldVal && $.inArray($fieldName, ['client', 'tel']) !== -1) {
+          hasError[$fieldName] = true;
+          $this.addClass("has-warning").find('span.form-control-feedback').addClass("glyphicon-warning-sign");
+        } else {
+          $this.removeClass("has-warning").find('span.form-control-feedback').removeClass("glyphicon-warning-sign");
+          hasError[$fieldName] = false;
+        }
+      }
+      isEmptyRequiredFields();
+
+      $field.on("change", function () {
+        hasError[$fieldName] = isExist($fieldName, $field.val());
+        console.log("on change");
+        console.log(hasError);
+      }).on("focus", function () {
+        resetDefaultClass();
+      }).on("focusout", function () {
+        isEmptyRequiredFields();
+      });
+      console.log(hasError);
     });
-    //
   }
-  function formValidation() {
-    var isValide = true;
-    $(".form-add-customers input[name='code_clt']").change(function () {
-      var codeClt = $(this).val()
-      console.log(codeClt.lenght());
-    });
-  }
-  formValidation();
+  isformValid();
   // end form validation
 
   // start add customer info
