@@ -57,6 +57,9 @@ $(function () {
           resetFormDefaultClass($parent);
           $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
         }
+      } else {
+        resetFormDefaultClass($parent);
+        $parent.addClass("has-warning").find('span.form-control-feedback').addClass("glyphicon-warning-sign");
       }
 
       console.log("success msg here ");
@@ -68,7 +71,7 @@ $(function () {
     });
   }
   // call on onload
-  getNextId();
+  // getNextId();
   // end get the next client
 
   $($actionsView + " .btn-create").on("click", function () {
@@ -78,14 +81,15 @@ $(function () {
     $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
 
     var $codeCltVal = $(".form-add-customers input[name='code_clt']").attr('value');
-    if (!$codeCltVal) {
-      getNextId();
-    }
+    // if (!$codeCltVal) {
+    // }
     isEmptyRequiredFields();
+    getNextId();
   });
 
   $($actionsView + " .btn-discard").on("click", function () {
     showMainView();
+    resetFormDefaultClass($(".form-add-customers .form-group.has-feedback"), true);
   });
   // end
 
@@ -115,9 +119,17 @@ $(function () {
   // end function to check existense
 
   // start reset form class to default
-  function resetFormDefaultClass($this) {
-    $this.removeClass("has-warning has-success has-error").find('span.form-control-feedback')
-    .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
+  function resetFormDefaultClass($this, resetAll = false) {
+    if (resetAll) {
+      $this.each(function () {
+        $(this).removeClass("has-warning has-success has-error").find('span.form-control-feedback')
+        .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
+        isEmptyRequiredFields();
+      });
+    } else {
+      $this.removeClass("has-warning has-success has-error").find('span.form-control-feedback')
+      .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
+    }
   }
   // end reset form class to default
 
@@ -216,6 +228,7 @@ $(function () {
 
   $(".zones .actions .add-view .btn-save").on("click", function () {
     addCustomers();
+    resetFormDefaultClass($(".form-add-customers .form-group.has-feedback"), true);
   });
   // end add customer info
 
