@@ -85,6 +85,7 @@ $(function () {
     // }
     isEmptyRequiredFields();
     getNextId();
+    isFormValid();
   });
 
   $($actionsView + " .btn-discard").on("click", function () {
@@ -157,6 +158,21 @@ $(function () {
   }
   // end check if required fields is empty or not
 
+  // start check is all fields of the form was valid
+  function isFormValid() {
+    // loop in each field to check if has errors or warning
+    $(".form-add-customers .form-group.has-feedback").each(function () {
+      if ($(this).hasClass("has-error") || $(this).hasClass("has-warning")) {
+        $(".zones .actions .add-view .btn-save").attr("disabled", true);
+        return false;
+      } else {
+        $(".zones .actions .add-view .btn-save").attr("disabled", false);
+        return true;
+      }
+    });
+  }
+  // end check is all fields of the form was valid
+
   // start is email function
   function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -164,8 +180,40 @@ $(function () {
   }
   // end is email function
 
+  // start is clientCode function
+  function isClientCode(clientCode) {
+    var regex = /^[0-9]{7}$/;
+    return regex.test(clientCode);
+  }
+  // end is clientCode function
+
+  // start is badgeCode function
+  function isBadgeCode(badgeCode) {
+    var regex = /^[a-zA-Z0-9]{1,10}$/;
+    return regex.test(badgeCode);
+  }
+  // end is badgeCode function
+
+  // start is clientName function
+  function isClientName(clientName) {
+    var regex = /^[\w\-'_\s]{1,50}$/;
+    return regex.test(clientName);
+  }
+  // end is clientName function
+
+  // start is phoneNumber function
+  function isPhoneNumber(phoneNumber) {
+    var regex = /^[0-9-. ]+$/;
+    if ((phoneNumber.replace(/[^0-9]/g,"").length == 10) && (phoneNumber.replace(/[^ -.]/g,"").length <= 4)) {
+      return regex.test(phoneNumber);
+    } else {
+      return false;
+    }
+  }
+  // end is phoneNumber function
+
   // start form validation
-  function isformValid() {
+  function formValidion() {
     $(".form-add-customers .form-group.has-feedback input").on('input focus blur', function (e) {
       var $field     = $(this);
       var $parent    = $field.closest(".form-add-customers .form-group.has-feedback");
@@ -195,14 +243,14 @@ $(function () {
           // end isFound function
 
           if ($fieldName == 'code_clt') {
-            if ($fieldVal.length == 7) {
+            if (isClientCode($fieldVal)) {
               isFound();
             } else {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
             }
           } else if ($fieldName == 'client') {
-            if (!true) {
+            if (!isClientName($fieldVal)) {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
             } else {
@@ -216,14 +264,14 @@ $(function () {
               isFound();
             }
           } else if (($fieldName == 'tel') || ($fieldName == 'mobile') || $fieldName == 'fax') {
-            if (!true) {
+            if ((!isPhoneNumber($fieldVal))) {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
             } else {
               isFound();
             }
           } else if ($fieldName == 'codebadge') {
-            if (!true) {
+            if (!isBadgeCode($fieldVal)) {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
             } else {
@@ -235,17 +283,17 @@ $(function () {
           resetFormDefaultClass($parent);
         }
         //
-
+        isFormValid();
       } else if (e.type == "focus") {
 
         if (!$parent.hasClass("has-success")) {
           resetFormDefaultClass($parent);
         }
-
+        isFormValid();
       }
     });
   }
-  isformValid();
+  formValidion();
   // end form validation
 
   // start add customer info
@@ -276,6 +324,7 @@ $(function () {
   }
 
   $(".zones .actions .add-view .btn-save").on("click", function () {
+    console.log("save");
     addCustomers();
     resetFormDefaultClass($(".form-add-customers .form-group.has-feedback"), true);
   });
