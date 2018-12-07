@@ -4,12 +4,16 @@ DataTable fix overflow (display none to block)  => DONE
 dataTable fix loading (spinner class) on pagination  => DONE
 block click on pagination buttons if it has the limit value [first, last]  => DONE
 fix go to page input event and validation (allow only int value)  => DONE
+translate to fr
+add field title to dataTable header
+fix grid view ...
 edit
 searching
 form validation
 fix sorting in dataTable (we have sorting only in the current page)
 breadcrumb
 notification msg (success, error, ...) after crud
+
 
 
 ------
@@ -22,6 +26,48 @@ email
 code_bage a saisir , unique
 nbr = 0
 ------
+
+
+##############################################################
+
+
+	case 'delete':
+		Customers::delete($_POST["t"], , $customerInfo);
+		break;
+
+		------------
+
+
+
+
+
+	public static function delete($table, $primaryKey, $primaryKeyName = "id"){
+		$cnx = Utils::connect_db();
+		$pr  = $cnx->prepare("DELETE FROM $table WHERE $primaryKeyName = ?");
+		$pr->execute(array($primaryKey));
+	}
+
+
+
+	-----------
+
+
+
+	public static function delete_all($table){
+		$cnx=Utils::connect_db();
+		$pr=$cnx->prepare("TRUNCATE TABLE $table");
+		$pr->execute();
+	}
+
+	case 'delete_all':
+		$cnx=Customers::connect_db();
+		$pr=$cnx->prepare("TRUNCATE TABLE Z_TEST_CLIENT");
+		$pr->execute();
+		break;
+
+
+##############################################################
+
 
 
 

@@ -157,6 +157,13 @@ $(function () {
   }
   // end check if required fields is empty or not
 
+  // start is email function
+  function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+  }
+  // end is email function
+
   // start form validation
   function isformValid() {
     $(".form-add-customers .form-group.has-feedback input").on('input focus blur', function (e) {
@@ -174,16 +181,58 @@ $(function () {
 
         //
         if ($fieldVal) {
-          console.log("no empty : " + $fieldName + " : " + $fieldVal);
-          isFound = isExist($fieldName, $fieldVal);
-          console.log($fieldName + " " + isFound);
-          if (isFound) {
-            resetFormDefaultClass($parent);
-            $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
-          } else {
-            resetFormDefaultClass($parent);
-            $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
+          // start isFound function
+          function isFound() {
+            isFound = isExist($fieldName, $fieldVal);
+            if (isFound) {
+              resetFormDefaultClass($parent);
+              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+            } else {
+              resetFormDefaultClass($parent);
+              $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
+            }
           }
+          // end isFound function
+
+          if ($fieldName == 'code_clt') {
+            if ($fieldVal.length == 7) {
+              isFound();
+            } else {
+              resetFormDefaultClass($parent);
+              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+            }
+          } else if ($fieldName == 'client') {
+            if (!true) {
+              resetFormDefaultClass($parent);
+              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+            } else {
+              isFound();
+            }
+          } else if ($fieldName == 'e_mail') {
+            if (!isEmail($fieldVal)){
+              resetFormDefaultClass($parent);
+              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+            } else {
+              isFound();
+            }
+          } else if (($fieldName == 'tel') || ($fieldName == 'mobile') || $fieldName == 'fax') {
+            if (!true) {
+              resetFormDefaultClass($parent);
+              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+            } else {
+              isFound();
+            }
+          } else if ($fieldName == 'codebadge') {
+            if (!true) {
+              resetFormDefaultClass($parent);
+              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+            } else {
+              isFound();
+            }
+          }
+          // isFound();
+        } else if ($.inArray($fieldName, ['code_clt', 'client', 'tel']) === -1) {
+          resetFormDefaultClass($parent);
         }
         //
 
