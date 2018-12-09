@@ -27,6 +27,9 @@ $(function () {
     $(".main-header .zones .search-form, .main-header .zones .navigations").show();
     // reset form
     $('.form-add-customers').trigger("reset");
+    // reset nav-tabs and tab-content
+    $("ul.nav-tabs li, .tab-content .tab-pane").removeClass("active").eq(0).addClass("active");
+    $(".tab-content .tab-pane").removeClass("active").eq(0).addClass("active");
   }
 
   // start get the nextid of client
