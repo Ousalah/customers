@@ -172,9 +172,6 @@
     margin-bottom: 5px;
     .main-form {
       .left-form {
-        @media #{$min-medium} {
-          margin-bottom: 50px;
-        }
         .control-label {
           padding-left: 0;
         }
@@ -185,7 +182,7 @@
             padding-left: 0;
           }
         }
-        margin-bottom: 50px;
+        margin-bottom: 70px;
       }
     }
     .control-label {

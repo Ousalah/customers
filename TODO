@@ -4,6 +4,7 @@ DataTable fix overflow (display none to block)  => DONE
 dataTable fix loading (spinner class) on pagination  => DONE
 block click on pagination buttons if it has the limit value [first, last]  => DONE
 fix go to page input event and validation (allow only int value)  => DONE
+fix form height if has error, problem in tab content position  => DONE
 translate to fr
 add field title to dataTable header
 fix grid view ...
@@ -14,6 +15,7 @@ fix sorting in dataTable (we have sorting only in the current page)
 breadcrumb
 notification msg (success, error, ...) after crud
 fix isExist phone number ( -.)
+check avantage value
 
 
 

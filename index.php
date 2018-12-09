@@ -78,21 +78,24 @@
                 <div class="form-group has-feedback">
                   <label class="col-xs-2 control-label">Ref</label>
                   <div class="col-xs-4">
-                    <input type="text" class="form-control" name="code_clt" value="" placeholder="0123456" readonly>
+                    <input type="text" class="form-control" name="code_clt" value="" data-title="Code de client" placeholder="0123456" readonly>
+                    <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
                   <label for="client" class="col-xs-2 control-label">Client</label>
                   <div class="col-xs-9">
-                    <input type="text" class="form-control" id="client" value="" name="client" placeholder="Client Name">
+                    <input type="text" class="form-control" id="client" value="" name="client" data-title="Nom de client" placeholder="Client Name">
+                    <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
                   <label for="e_mail" class="col-xs-2 control-label">Email</label>
                   <div class="col-xs-9">
-                    <input type="text" class="form-control" id="e_mail" value="" name="e_mail" placeholder="name@mail.com">
+                    <input type="text" class="form-control" id="e_mail" value="" name="e_mail" data-title="Email" placeholder="name@mail.com">
+                    <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
@@ -104,23 +107,26 @@
             <div class="col-md-6">
               <div class="right-form">
                 <div class="form-group has-feedback">
-                  <label for="tel" class="col-xs-2 control-label">Phone</label>
+                  <label for="tel" class="col-xs-2 control-label">Telephone</label>
                   <div class="col-xs-9">
-                    <input type="tel" class="form-control" id="tel" value="" name="tel" placeholder="0612345678">
+                    <input type="tel" class="form-control" id="tel" value="" name="tel" data-title="Telephone" placeholder="0612345678">
+                    <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
                   <label for="fax" class="col-xs-2 control-label">Fax</label>
                   <div class="col-xs-9">
-                    <input type="tel" class="form-control" id="fax" value="" name="fax" placeholder="0522000000">
+                    <input type="tel" class="form-control" id="fax" value="" name="fax" data-title="Fax" placeholder="0522000000">
+                    <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
-                  <label for="mobile" class="col-xs-2 control-label">Mobile</label>
+                  <label for="mobile" class="col-xs-2 control-label">GSM</label>
                   <div class="col-xs-9">
-                    <input type="tel" class="form-control" id="mobile" value="" name="mobile" placeholder="0612345678">
+                    <input type="tel" class="form-control" id="mobile" value="" name="mobile" data-title="GSM" placeholder="0612345678">
+                    <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
                 </div>
@@ -163,7 +169,8 @@
               <div class="form-group has-feedback">
                 <label for="codebadge" class="col-xs-2 control-label">Code Badge</label>
                 <div class="col-xs-4">
-                  <input type="text" class="form-control" id="codebadge" value="" name="codebadge" placeholder="Code Badge">
+                  <input type="text" class="form-control" id="codebadge" value="" name="codebadge" data-title="Code Badge" placeholder="Code Badge">
+                  <p class="help-block"></p>
                   <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
               </div>

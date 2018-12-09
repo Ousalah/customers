@@ -29,7 +29,7 @@ $(function () {
     $('.form-add-customers').trigger("reset");
   }
 
-  // start get the next client
+  // start get the nextid of client
   function getNextId() {
     $.ajax({
       url: "controller/Customers.php",
@@ -42,8 +42,10 @@ $(function () {
     })
 
     .done(function(data) {
-      var $codeClt = $(".form-add-customers input[name='code_clt']");
-      var $parent  = $codeClt.closest(".form-add-customers .form-group.has-feedback");
+      var $codeClt    = $(".form-add-customers input[name='code_clt']");
+      var $msg        = $codeClt.find('.help-block');
+      var $fieldTitle = $codeClt.data("title");
+      var $parent     = $codeClt.closest(".form-add-customers .form-group.has-feedback");
 
       $codeClt.attr('value', data);
       var $codeCltVal = $codeClt.val();
@@ -53,13 +55,16 @@ $(function () {
         if (isFound) {
           resetFormDefaultClass($parent);
           $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+          $msg.html($fieldTitle + " existe déjà.");
         } else {
           resetFormDefaultClass($parent);
           $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
+          $msg.html("");
         }
       } else {
         resetFormDefaultClass($parent);
         $parent.addClass("has-warning").find('span.form-control-feedback').addClass("glyphicon-warning-sign");
+        $msg.html($fieldTitle + " est obligatoire.");
       }
 
       console.log("success msg here ");
@@ -72,7 +77,7 @@ $(function () {
   }
   // call on onload
   // getNextId();
-  // end get the next client
+  // end get the nextid of client
 
   $($actionsView + " .btn-create").on("click", function () {
     $($actionsView).hide().siblings(".add-view").show();
@@ -125,11 +130,13 @@ $(function () {
       $this.each(function () {
         $(this).removeClass("has-warning has-success has-error").find('span.form-control-feedback')
         .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
+        $this.find('.help-block').html("");
         isEmptyRequiredFields();
       });
     } else {
       $this.removeClass("has-warning has-success has-error").find('span.form-control-feedback')
       .removeClass("glyphicon-warning-sign glyphicon-ok glyphicon-remove");
+      $this.find('.help-block').html("");
     }
   }
   // end reset form class to default
@@ -137,21 +144,25 @@ $(function () {
   // start check if required fields is empty or not
   function isEmptyRequiredFields($singleField = "") {
     $(".form-add-customers .form-group.has-feedback").each(function () {
-      var $this      = $singleField ? $singleField : $(this);
-      var $field     = $this.find('input');
-      var $fieldName = $field.attr('name');
-      var $fieldVal  = $.trim($field.val());
+      var $this       = $singleField ? $singleField : $(this);
+      var $field      = $this.find('input');
+      var $msg        = $this.find('.help-block');
+      var $fieldTitle = $field.data("title");
+      var $fieldName  = $field.attr('name');
+      var $fieldVal   = $.trim($field.val());
 
       // check if has empty value, only ('code_clt', 'client', 'tel')
       if ($.inArray($fieldName, ['code_clt', 'client', 'tel']) !== -1) {
         if (!$fieldVal) {
           resetFormDefaultClass($this);
           $this.addClass("has-warning").find('span.form-control-feedback').addClass("glyphicon-warning-sign");
+          $msg.html($fieldTitle + " est obligatoire.");
         } else {
           if (!$this.hasClass("has-success")) {
             resetFormDefaultClass($this);
           }
           $this.removeClass("has-warning").find('span.form-control-feedback').removeClass("glyphicon-warning-sign");
+          $msg.html("");
         }
       }
     });
@@ -214,15 +225,18 @@ $(function () {
 
   // start form validation
   function formValidion() {
-    $(".form-add-customers .form-group.has-feedback input").on('input focus blur', function (e) {
-      var $field     = $(this);
-      var $parent    = $field.closest(".form-add-customers .form-group.has-feedback");
-      var $fieldName = $field.attr('name');
-      var $fieldVal  = $.trim($field.val());
-      var isFound    = false;
+    $(".form-add-customers .form-group.has-feedback input").on('input focus blur mouseleave', function (e) {
+      var $field      = $(this);
+      var $parent     = $field.closest(".form-add-customers .form-group.has-feedback");
+      var $fieldName  = $field.attr('name');
+      var $fieldVal   = $.trim($field.val());
+      var isFound     = false;
+      var $msg        = $field.siblings('.help-block');
+      var $fieldTitle = $field.data("title");
+
       console.log(e.type + " " + $fieldName);
 
-      if (e.type == "input" || e.type == "blur") {
+      if (e.type == "input" || e.type == "blur" || e.type == "mouseleave") {
 
         // show warning if required fields was empty
         isEmptyRequiredFields($parent);
@@ -235,9 +249,11 @@ $(function () {
             if (isFound) {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+              $msg.html($fieldTitle + " existe déjà.");
             } else {
               resetFormDefaultClass($parent);
               $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
+              $msg.html("");
             }
           }
           // end isFound function
@@ -248,11 +264,13 @@ $(function () {
             } else {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+              $msg.html($fieldTitle + " doit avoir 7 chiffres.");
             }
           } else if ($fieldName == 'client') {
             if (!isClientName($fieldVal)) {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+              $msg.html($fieldTitle + " ne doit avoir que des lettres, des chiffres et des symboles (-_ '). 50 caractères maximum.");
             } else {
               isFound();
             }
@@ -260,6 +278,7 @@ $(function () {
             if (!isEmail($fieldVal)){
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+              $msg.html($fieldTitle + " doit avoir le format personne@exemple.com.");
             } else {
               isFound();
             }
@@ -267,6 +286,7 @@ $(function () {
             if ((!isPhoneNumber($fieldVal))) {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+              $msg.html($fieldTitle + " doit avoir 10 chiffres et il peut être séparé par un espace, . ou -.");
             } else {
               isFound();
             }
@@ -274,6 +294,7 @@ $(function () {
             if (!isBadgeCode($fieldVal)) {
               resetFormDefaultClass($parent);
               $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+              $msg.html($fieldTitle + " ne doit avoir que des lettres et des chiffres. 10 caractères maximum.");
             } else {
               isFound();
             }

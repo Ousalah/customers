@@ -267,16 +267,11 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-@media (min-width: 992px) {
-  .customers-add .form-add-customers .main-form .left-form {
-    margin-bottom: 50px;
-  }
-}
 .customers-add .form-add-customers .main-form .left-form .control-label {
   padding-left: 0;
 }
 .customers-add .form-add-customers .main-form .right-form {
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 @media (max-width: 991px) {
   .customers-add .form-add-customers .main-form .right-form .control-label {
