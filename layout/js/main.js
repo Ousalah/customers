@@ -86,6 +86,7 @@ $(function () {
     $($actionsView).hide().siblings(".add-view").show();
     $("._customers-view").hide();
     $(".customers-add").show();
+    $(".customers-add").attr("data-action", "add");
     $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
 
     var $codeCltVal = $(".form-add-customers input[name='code_clt']").attr('value');
@@ -109,6 +110,7 @@ $(function () {
     $($actionsView).hide().siblings(".edit-view").show();
     $("._customers-view").hide();
     $(".customers-edit").show();
+    $(".customers-edit").attr("data-action", "edit");
     $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
 
     $.ajax({
@@ -143,8 +145,19 @@ $(function () {
       $(".form-add-customers input[name='adresse2fact']").val(data[0].ADRESSE2FACT);
       $(".form-add-customers input[name='cpfact']").val(data[0].CPFACT);
       $(".form-add-customers input[name='villefact']").val(data[0].VILLEFACT);
-      isEmptyRequiredFields();
-      isFormValid();
+
+      // start validate each fields
+      $(".form-add-customers .form-group.has-feedback input").each(function () {
+        var $field      = $(this);
+        var $parent     = $field.closest(".form-add-customers .form-group.has-feedback");
+        var $fieldName  = $field.attr('name');
+        var $fieldVal   = $.trim($field.val());
+        var $msg        = $field.siblings('.help-block');
+        var $fieldTitle = $field.data("title");
+        validatAllFields($fieldName, $fieldVal, $parent, $msg, $fieldTitle);
+      });
+      // end validate each fields
+
     })
 
     .fail(function(data) {
@@ -156,6 +169,22 @@ $(function () {
   // start function to check existense
   function isExist(field, value) {
     var output = true;
+
+    // start check if action = add or edit
+    var conditions = [{key: field, operator: '=', value: value}];
+    var $action = $.trim($(".customers-add.customers-edit").attr("data-action"));
+    console.log($action);
+    if ($action == "add") {
+      conditions = conditions;
+    } else if ($action == "edit") {
+      var $codeCltVal = $.trim($(".form-add-customers input[name='code_clt']").val());
+      conditions = [
+        {key: field, operator: '=', value: value},
+        {key: 'code_clt', operator: '!=', value: $codeCltVal}
+      ];
+    }
+    // edit check if action = add or edit
+
     $.ajax({
       async: false,
       url: "controller/Customers.php",
@@ -166,7 +195,7 @@ $(function () {
         args: {
           fields: [field],
           table: "Z_TEST_CLIENT",
-          conditions: [{key: field, operator: '=', value: value}],
+          conditions: conditions,
           checkExist: true,
         },
       },
@@ -279,6 +308,78 @@ $(function () {
   }
   // end is phoneNumber function
 
+  // start validation of all fields
+  function validatAllFields ($fieldName, $fieldVal, $parent, $msg, $fieldTitle) {
+    // start isFound function
+    function isFound() {
+      var isFound     = false;
+      isFound = isExist($fieldName, $fieldVal);
+      if (isFound) {
+        resetFormDefaultClass($parent);
+        $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+        $msg.html($fieldTitle + " existe déjà.");
+      } else {
+        resetFormDefaultClass($parent);
+        $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
+        $msg.html("");
+      }
+    }
+    // end isFound function
+
+    // show warning if required fields was empty
+    isEmptyRequiredFields($parent);
+
+    //
+    if ($fieldVal) {
+      if ($fieldName == 'code_clt') {
+        if (isClientCode($fieldVal)) {
+          isFound();
+        } else {
+          resetFormDefaultClass($parent);
+          $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+          $msg.html($fieldTitle + " doit avoir 7 chiffres.");
+        }
+      } else if ($fieldName == 'client') {
+        if (!isClientName($fieldVal)) {
+          resetFormDefaultClass($parent);
+          $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+          $msg.html($fieldTitle + " ne doit avoir que des lettres, des chiffres et des symboles (-_ '). 50 caractères maximum.");
+        } else {
+          isFound();
+        }
+      } else if ($fieldName == 'e_mail') {
+        if (!isEmail($fieldVal)){
+          resetFormDefaultClass($parent);
+          $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+          $msg.html($fieldTitle + " doit avoir le format personne@exemple.com.");
+        } else {
+          isFound();
+        }
+      } else if (($fieldName == 'tel') || ($fieldName == 'mobile') || $fieldName == 'fax') {
+        if ((!isPhoneNumber($fieldVal))) {
+          resetFormDefaultClass($parent);
+          $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+          $msg.html($fieldTitle + " doit avoir 10 chiffres et il peut être séparé par un espace, . ou -.");
+        } else {
+          isFound();
+        }
+      } else if ($fieldName == 'codebadge') {
+        if (!isBadgeCode($fieldVal)) {
+          resetFormDefaultClass($parent);
+          $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
+          $msg.html($fieldTitle + " ne doit avoir que des lettres et des chiffres. 10 caractères maximum.");
+        } else {
+          isFound();
+        }
+      }
+    } else if ($.inArray($fieldName, ['code_clt', 'client', 'tel']) === -1) {
+      resetFormDefaultClass($parent);
+    }
+    //
+    isFormValid();
+  }
+  // end validation of all fields
+
   // start form validation
   function formValidion() {
     $(".form-add-customers .form-group.has-feedback input").on('input focus blur mouseleave', function (e) {
@@ -286,7 +387,6 @@ $(function () {
       var $parent     = $field.closest(".form-add-customers .form-group.has-feedback");
       var $fieldName  = $field.attr('name');
       var $fieldVal   = $.trim($field.val());
-      var isFound     = false;
       var $msg        = $field.siblings('.help-block');
       var $fieldTitle = $field.data("title");
 
@@ -294,73 +394,8 @@ $(function () {
 
       if (e.type == "input" || e.type == "blur" || e.type == "mouseleave") {
 
-        // show warning if required fields was empty
-        isEmptyRequiredFields($parent);
+        validatAllFields($fieldName, $fieldVal, $parent, $msg, $fieldTitle);
 
-        //
-        if ($fieldVal) {
-          // start isFound function
-          function isFound() {
-            isFound = isExist($fieldName, $fieldVal);
-            if (isFound) {
-              resetFormDefaultClass($parent);
-              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
-              $msg.html($fieldTitle + " existe déjà.");
-            } else {
-              resetFormDefaultClass($parent);
-              $parent.addClass("has-success").find('span.form-control-feedback').addClass("glyphicon-ok");
-              $msg.html("");
-            }
-          }
-          // end isFound function
-
-          if ($fieldName == 'code_clt') {
-            if (isClientCode($fieldVal)) {
-              isFound();
-            } else {
-              resetFormDefaultClass($parent);
-              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
-              $msg.html($fieldTitle + " doit avoir 7 chiffres.");
-            }
-          } else if ($fieldName == 'client') {
-            if (!isClientName($fieldVal)) {
-              resetFormDefaultClass($parent);
-              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
-              $msg.html($fieldTitle + " ne doit avoir que des lettres, des chiffres et des symboles (-_ '). 50 caractères maximum.");
-            } else {
-              isFound();
-            }
-          } else if ($fieldName == 'e_mail') {
-            if (!isEmail($fieldVal)){
-              resetFormDefaultClass($parent);
-              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
-              $msg.html($fieldTitle + " doit avoir le format personne@exemple.com.");
-            } else {
-              isFound();
-            }
-          } else if (($fieldName == 'tel') || ($fieldName == 'mobile') || $fieldName == 'fax') {
-            if ((!isPhoneNumber($fieldVal))) {
-              resetFormDefaultClass($parent);
-              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
-              $msg.html($fieldTitle + " doit avoir 10 chiffres et il peut être séparé par un espace, . ou -.");
-            } else {
-              isFound();
-            }
-          } else if ($fieldName == 'codebadge') {
-            if (!isBadgeCode($fieldVal)) {
-              resetFormDefaultClass($parent);
-              $parent.addClass("has-error").find('span.form-control-feedback').addClass("glyphicon-remove");
-              $msg.html($fieldTitle + " ne doit avoir que des lettres et des chiffres. 10 caractères maximum.");
-            } else {
-              isFound();
-            }
-          }
-          // isFound();
-        } else if ($.inArray($fieldName, ['code_clt', 'client', 'tel']) === -1) {
-          resetFormDefaultClass($parent);
-        }
-        //
-        isFormValid();
       } else if (e.type == "focus") {
 
         if (!$parent.hasClass("has-success")) {

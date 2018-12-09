@@ -71,7 +71,7 @@
     <!-- End Header -->
 
     <!-- Start add & edit customers -->
-    <div class="customers-add customers-edit">
+    <div class="customers-add customers-edit" data-action="add">
       <!-- start container -->
       <div class="container">
         <form class="form-add-customers form-horizontal">
@@ -174,7 +174,7 @@
               <div class="form-group has-feedback">
                 <label for="codebadge" class="col-xs-2 control-label">Code Badge</label>
                 <div class="col-xs-4">
-                  <input type="text" class="form-control" id="codebadge" value="" name="codebadge" data-title="Code Badge" placeholder="Code Badge">
+                  <input type="text" class="form-control" id="codebadge" value="" name="codebadge" data-title="Code badge" placeholder="Code Badge">
                   <p class="help-block"></p>
                   <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 </div>
@@ -275,7 +275,7 @@
         <!-- end retry button -->
         <div class="row">
           <div class="col-xs-12">
-            <table id="table-customers-list" class="table table-striped" style="width:100%">
+            <table id="table-customers-list" class="table table-striped table-hover" style="width:100%">
               <thead></thead>
               <tbody></tbody>
             </table>
