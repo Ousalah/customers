@@ -433,11 +433,11 @@ $(function () {
         // check if is not null client name, then set data to 'customerGrid'
         if (customer.CLIENT) {
           customerGrid += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">';
-          customerGrid += '<div class="customer-grid">';
+          customerGrid += '<div class="customer-grid" data-code="' + customer.CODE_CLT + '">';
           customerGrid += '<div class="customer-details text-center">';
           customerGrid += '<h3 class="fullname"><i class="fa fa-user"></i> ' + customer.CLIENT + '</h3>';
-          if (customer.TEL) customerGrid += '<p><i class="fa fa-map-marker"></i> ' + customer.TEL + '</p>';
-          if (customer.ADRESSE1LIV) customerGrid += '<p><i class="fa fa-phone"></i> ' + customer.ADRESSE1LIV + '</p>';
+          if (customer.E_MAIL) customerGrid += '<p><i class="fa fa-envelope"></i> ' + customer.E_MAIL + '</p>';
+          if (customer.TEL) customerGrid += '<p><i class="fa fa-phone"></i> ' + customer.TEL + '</p>';
           customerGrid += '</div></div></div>';
         }
 
@@ -447,9 +447,8 @@ $(function () {
         }
 
         tbody += '<td>';
-        tbody += '<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-check"></i></a>';
-        tbody += ' <a href="#" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>';
-        tbody += ' <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>';
+        tbody += ' <span class="btn btn-primary btn-xs btn-edit" data-code="' + customer.CODE_CLT + '"><i class="fa fa-edit"></i></span>';
+        tbody += ' <span class="btn btn-danger btn-xs btn-delete" data-code="' + customer.CODE_CLT + '"><i class="fa fa-remove"></i></span>';
         tbody += '</td></tr>';
       }
 
@@ -473,6 +472,41 @@ $(function () {
   // onload get customers
   getCustomers();
   // end get customers
+
+  // start delete customer function
+  function deleteCustomer(code) {
+    var codeClt = $.trim(code);
+    $.ajax({
+      url: "controller/Customers.php",
+      type: "POST",
+      data: {
+        a: "delete",
+        t: "Z_TEST_CLIENT",
+        args : {idKey: 'CODE_CLT', idValue: codeClt}
+      },
+      beforeSend : function(){
+      }
+    })
+
+    .done(function(data) {
+      console.log(data);
+      $('#table-customers-list').DataTable().destroy();
+      getCustomers($(".pagination-current").val());
+      showMainView();
+      console.log("success msg here");
+    })
+
+    .fail(function(data) {
+      console.log("fail msg here");
+    });
+  }
+  // end delete customer function
+
+  // start on btn delete clicked
+  $("#table-customers-list tbody").on("click", "td .btn-delete", function () {
+    deleteCustomer($(this).data("code"));
+  });
+  // end on btn delete clicked
 
   // on click in pagination buttons
   $(".paginations").on("click", function () {
