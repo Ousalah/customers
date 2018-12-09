@@ -99,6 +99,57 @@ $(function () {
   });
   // end
 
+  // start on btn edit clicked
+  $("#table-customers-list tbody, .customers-grid").on("click", "td .btn-edit, .customer-grid", function () {
+    var codeClt = $.trim($(this).data("code"));
+    console.log(codeClt);
+    $($actionsView).hide().siblings(".edit-view").show();
+    $("._customers-view").hide();
+    $(".customers-edit").show();
+    $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
+
+    $.ajax({
+      url: "controller/Customers.php",
+      type: "POST",
+      dataType: "json",
+      data: {
+        a: "edit",
+        args: {
+          table: "Z_TEST_CLIENT",
+          conditions: [{key: 'code_clt', operator: '=', value: codeClt}],
+        },
+      },
+      beforeSend : function(){ }
+    })
+
+    .done(function(data) {
+      $(".form-add-customers input[name='code_clt']").val(data[0].CODE_CLT);
+      $(".form-add-customers input[name='client']").val(data[0].CLIENT);
+      $(".form-add-customers input[name='e_mail']").val(data[0].E_MAIL);
+      $(".form-add-customers input[name='tel']").val(data[0].TEL);
+      $(".form-add-customers input[name='fax']").val(data[0].FAX);
+      $(".form-add-customers input[name='mobile']").val(data[0].mobile);
+      $(".form-add-customers input[name='codebadge']").val(data[0].codebadge);
+      $(".form-add-customers input[name='avantage'][value='" + data[0].Avantage + "']").attr('checked', 'checked');
+      $(".form-add-customers textarea[name='commentaire']").val(data[0].COMMENTAIRE);
+      $(".form-add-customers input[name='adresse1liv']").val(data[0].ADRESSE1LIV);
+      $(".form-add-customers input[name='adresse2liv']").val(data[0].ADRESSE2LIV);
+      $(".form-add-customers input[name='cpliv']").val(data[0].CPLIV);
+      $(".form-add-customers input[name='villeliv']").val(data[0].VILLELIV);
+      $(".form-add-customers input[name='adresse1fact']").val(data[0].ADRESSE1FACT);
+      $(".form-add-customers input[name='adresse2fact']").val(data[0].ADRESSE2FACT);
+      $(".form-add-customers input[name='cpfact']").val(data[0].CPFACT);
+      $(".form-add-customers input[name='villefact']").val(data[0].VILLEFACT);
+      isEmptyRequiredFields();
+      isFormValid();
+    })
+
+    .fail(function(data) {
+      console.log("edit fail msg here");
+    });
+  });
+  // end on btn edit clicked
+
   // start function to check existense
   function isExist(field, value) {
     var output = true;
@@ -175,9 +226,11 @@ $(function () {
     $(".form-add-customers .form-group.has-feedback").each(function () {
       if ($(this).hasClass("has-error") || $(this).hasClass("has-warning")) {
         $(".zones .actions .add-view .btn-save").attr("disabled", true);
+        $(".zones .actions .edit-view .btn-update").attr("disabled", true);
         return false;
       } else {
         $(".zones .actions .add-view .btn-save").attr("disabled", false);
+        $(".zones .actions .edit-view .btn-update").attr("disabled", false);
         return true;
       }
     });

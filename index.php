@@ -33,8 +33,13 @@
                 </div>
                 <div class="actions-view add-view">
                   <button class="btn btn-success btn-save">Save</button>
-                  <button class="btn btn-transparent btn-transparent-success btn-discard">Discard</button></div>
-                <div class="actions-view edit-view"></div>
+                  <button class="btn btn-transparent btn-transparent-success btn-discard">Discard</button>
+                </div>
+                <div class="actions-view edit-view">
+                  <button class="btn btn-success btn-update">Modifier</button>
+                  <button class="btn btn-danger btn-delete">Delete</button>
+                  <button class="btn btn-transparent btn-transparent-success btn-discard">Discard</button>
+                </div>
               </div>
             </div>
           </div>
@@ -65,8 +70,8 @@
     </div>
     <!-- End Header -->
 
-    <!-- Start add customers -->
-    <div class="customers-add">
+    <!-- Start add & edit customers -->
+    <div class="customers-add customers-edit">
       <!-- start container -->
       <div class="container">
         <form class="form-add-customers form-horizontal">
@@ -245,7 +250,7 @@
       </div>
       <!-- end container -->
     </div>
-    <!-- End add customers -->
+    <!-- End add & edit customers -->
 
     <!--  Start Customers grid -->
     <div class="_customers-view customers-grid">

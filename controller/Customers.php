@@ -64,6 +64,10 @@ switch ($a) {
 		echo json_encode(Customers::get($args));
 		break;
 
+	case 'edit':
+		echo json_encode(Customers::get($args));
+		break;
+
 	case 'delete':
 		Customers::delete($t, $args["idValue"], $args["idKey"]);
 		break;
