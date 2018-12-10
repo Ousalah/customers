@@ -78,7 +78,6 @@ class Customers extends Utils {
     $stmt = $cnx->prepare("SELECT TOP $perPage * FROM (SELECT ROW_NUMBER() OVER (ORDER BY code_clt) AS RowNum, *
             FROM Z_TEST_CLIENT) AS RowConstrainedResult
             WHERE RowNum > ($perPage * ($pageNumber - 1)) {$where} ORDER BY code_clt");
-            // var_dump($stmt);
     $stmt->execute($values);
     return $stmt->fetchAll();
   }

@@ -1,3 +1,9 @@
+production to test
+1- .  <=>  168.55 ip
+2- customersTable: "CLIENT"  <=>  "Z_TEST_CLIENT"
+3- customersModel fnc:  "CLIENT" <=>  "Z_TEST_CLIENT"
+
+
 TODO
 pagination   										=> DONE
 DataTable fix overflow (display none to block)  => DONE
@@ -9,10 +15,11 @@ edit 								=> DONE
 form validation 		=> DONE
 fix grid view ...   => DONE
 breadcrumb 					=> DONE
+searching 					=> DONE
 
-searching
 check avantage value
 translate to fr
+dataTable init problem after (search, ...)
 
 add field title to dataTable header
 fix sorting in dataTable (we have sorting only in the current page)

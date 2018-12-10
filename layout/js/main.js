@@ -1,5 +1,6 @@
 $(function () {
   "use strict";
+  var customerTable = "Z_TEST_CLIENT";
 
   // start switch between list and grid view
   $(".main-header .navigations .view-mode i").on("click", function() {
@@ -42,7 +43,7 @@ $(function () {
       dataType: "json",
       data: {
         a: "nextid",
-        args: { table: "Z_TEST_CLIENT", primaryKey: 'code_clt' },
+        args: { table: customerTable, primaryKey: 'code_clt' },
       },
     })
 
@@ -157,7 +158,7 @@ $(function () {
       data: {
         a: "edit",
         args: {
-          table: "Z_TEST_CLIENT",
+          table: customerTable,
           conditions: [{key: 'code_clt', operator: '=', value: codeClt}],
         },
       },
@@ -231,7 +232,7 @@ $(function () {
         a: "check",
         args: {
           fields: [field],
-          table: "Z_TEST_CLIENT",
+          table: customerTable,
           conditions: conditions,
           checkExist: true,
         },
@@ -452,7 +453,7 @@ $(function () {
       type: "POST",
       data: {
         a: "add",
-        t: "Z_TEST_CLIENT",
+        t: customerTable,
         customerInfo : $(".form-add-customers").serialize()
       },
       beforeSend : function(){
@@ -486,7 +487,7 @@ $(function () {
       type: "POST",
       data: {
         a: "update",
-        t: "Z_TEST_CLIENT",
+        t: customerTable,
         customerInfo : $(".form-add-customers").serialize(),
         codeClt: codeClt
       },
@@ -547,8 +548,8 @@ $(function () {
       dataType: "json",
       data: {
         a: "get",
-        getColumnsArgs: { table: "Z_TEST_CLIENT" },
-        countArgs: { fields: ["count(code_clt)"], table: "Z_TEST_CLIENT", conditions: search },
+        getColumnsArgs: { table: customerTable },
+        countArgs: { fields: ["count(code_clt)"], table: customerTable, conditions: search },
         page: {currentPage: page, perPage: perPage},
         search: search
       },
@@ -649,7 +650,7 @@ $(function () {
       type: "POST",
       data: {
         a: "delete",
-        t: "Z_TEST_CLIENT",
+        t: customerTable,
         args : {idKey: 'CODE_CLT', idValue: codeClt}
       },
       beforeSend : function(){
