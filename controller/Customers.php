@@ -68,6 +68,12 @@ switch ($a) {
 		echo json_encode(Customers::get($args));
 		break;
 
+	case 'update':
+		$customerInfo = array();
+		parse_str($_POST['customerInfo'], $customerInfo);
+		Customers::update($t, $customerInfo, $codeClt, "code_clt");
+		break;
+
 	case 'delete':
 		Customers::delete($t, $args["idValue"], $args["idKey"]);
 		break;

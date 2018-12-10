@@ -46,9 +46,9 @@ class Utils
 		return $result !== FALSE;
 	}
 
-	public static function delete($table, $id, $nomid="id"){
-		$cnx=Utils::connect_db();
-		$pr=$cnx->prepare("delete from $table where $nomid=?");
+	public static function delete($table, $id, $idKey = "id"){
+		$cnx = Utils::connect_db();
+		$pr  = $cnx->prepare("delete from $table where $idKey = ?");
 		$pr->execute(array($id));
 	}
 
@@ -128,34 +128,27 @@ class Utils
 		$pr->execute($values);
 	}
 
-	public static function update($table,	$data=array(), $id, $image=array(), $nomid="id") {
-		$names=array();
-		$values=array();
-		$trous=array();
+	public static function update($table,	$data = array(), $idValue, $idKey = "id", $image = array()) {
+		$names  = array();
+		$values = array();
+		$trous  = array();
 		foreach ($data as $key => $value) {
-			$names[]="$key=?";
-			$values[]=$value;
-
+			$names[]  = "$key=?";
+			$values[] = $value;
 		}
 
 		# -- test if Isset image.
-		if ($image!=array() && !empty($image["name"])) {
-
+		if ($image != array() && !empty($image["name"])) {
 			$imagePath = Utils::upload($image);
-			$names[] = "image=?";
-			$values[] = $imagePath;
-
+			$names[]   = "image = ?";
+			$values[]  = $imagePath;
 		}
 
-		$namesdb=implode(',', $names);
-		$cnx=Utils::connect_db();
-		$pr=$cnx->prepare("update $table set $namesdb where
-			$nomid=?
-			");
-		var_dump($pr);
-		$values[]=$id;
+		$namesdb  = implode(',', $names);
+		$cnx      = Utils::connect_db();
+		$pr       = $cnx->prepare("update $table set $namesdb where $idKey = ?");
+		$values[] = $idValue;
 		$pr->execute($values);
-
 	}
 
 

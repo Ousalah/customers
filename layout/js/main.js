@@ -442,6 +442,44 @@ $(function () {
   });
   // end add customer info
 
+  // start update customer info
+  function updateCustomers(codeClt) {
+    $.ajax({
+      url: "controller/Customers.php",
+      type: "POST",
+      data: {
+        a: "update",
+        t: "Z_TEST_CLIENT",
+        customerInfo : $(".form-add-customers").serialize(),
+        codeClt: codeClt
+      },
+      beforeSend : function(){
+      }
+    })
+
+    .done(function(data) {
+      console.log(data);
+      $('#table-customers-list').DataTable().destroy();
+      getCustomers($(".pagination-current").val());
+      showMainView();
+      console.log("success msg here");
+    })
+
+    .fail(function(data) {
+      console.log("fail msg here");
+    });
+  }
+
+  $(".zones .actions .edit-view .btn-update").on("click", function () {
+    console.log("save");
+    var codeClt = $(".form-add-customers .form-group.has-feedback input[name='code_clt']").val();
+    console.log("update : " + codeClt);
+    updateCustomers(codeClt);
+    resetFormDefaultClass($(".form-add-customers .form-group.has-feedback"), true);
+  });
+  // end update customer info
+
+
   // start datatables
   function datatablesInit() {
     $('#table-customers-list').DataTable({

@@ -5,12 +5,12 @@ dataTable fix loading (spinner class) on pagination  => DONE
 block click on pagination buttons if it has the limit value [first, last]  => DONE
 fix go to page input event and validation (allow only int value)  => DONE
 fix form height if has error, problem in tab content position  => DONE
+edit 								=> DONE
+form validation 		=> DONE
+fix grid view ...   => DONE
 translate to fr
 add field title to dataTable header
-fix grid view ...
-edit
 searching
-form validation
 fix sorting in dataTable (we have sorting only in the current page)
 breadcrumb
 notification msg (success, error, ...) after crud
