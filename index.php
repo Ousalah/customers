@@ -14,7 +14,9 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <div class="zones"><span class="main-breadcrumb">Customers</span></div>
+            <div class="zones">
+              <span class="main-breadcrumb">Clients</span>
+            </div>
           </div>
           <div class="col-sm-6">
             <form class="zones form-horizontal" action="index.php" method="get">
@@ -29,7 +31,7 @@
               <div class="actions">
                 <div class="actions-view main-view">
                   <button class="btn btn-success btn-create">Create</button>
-                  <button class="btn btn-transparent btn-transparent-success btn-import">Import</button>
+                  <!-- <button class="btn btn-transparent btn-transparent-success btn-import">Import</button> -->
                 </div>
                 <div class="actions-view add-view">
                   <button class="btn btn-success btn-save">Save</button>

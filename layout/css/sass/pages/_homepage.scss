@@ -17,6 +17,10 @@
     .main-breadcrumb, .search-form, .actions, .navigations {
       @include vertical-center();
     }
+    .main-breadcrumb {
+      white-space: nowrap;
+      overflow: hidden;
+    }
     .search-form {
       .search {
         border-width: 0 0 1px;

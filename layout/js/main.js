@@ -30,6 +30,8 @@ $(function () {
     // reset nav-tabs and tab-content
     $("ul.nav-tabs li, .tab-content .tab-pane").removeClass("active").eq(0).addClass("active");
     $(".tab-content .tab-pane").removeClass("active").eq(0).addClass("active");
+    // reset breadcrumb
+    $(".main-header .zones .main-breadcrumb").html('Clients');
   }
 
   // start get the nextid of client
@@ -88,6 +90,7 @@ $(function () {
     $(".customers-add").show();
     $(".customers-add").attr("data-action", "add");
     $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
+    $(".main-header .zones .main-breadcrumb").html('<a href="#" class="main-page">Clients</a> / Nouveau');
 
     var $codeCltVal = $(".form-add-customers input[name='code_clt']").attr('value');
     // if (!$codeCltVal) {
@@ -97,7 +100,7 @@ $(function () {
     isFormValid();
   });
 
-  $($actionsView + " .btn-discard").on("click", function () {
+  $($actionsView + " , .main-header .zones .main-breadcrumb").on("click", ".btn-discard, .main-page", function () {
     showMainView();
     resetFormDefaultClass($(".form-add-customers .form-group.has-feedback"), true);
   });
@@ -106,12 +109,15 @@ $(function () {
   // start on btn edit clicked
   $("#table-customers-list tbody, .customers-grid").on("click", "td .btn-edit, .customer-grid", function () {
     var codeClt = $.trim($(this).data("code"));
+    var clientName = $.trim($(this).data("client"));
     console.log(codeClt);
     $($actionsView).hide().siblings(".edit-view").show();
     $("._customers-view").hide();
     $(".customers-edit").show();
     $(".customers-edit").attr("data-action", "edit");
     $(".main-header .zones .search-form, .main-header .zones .navigations").hide();
+    $(".main-header .zones .main-breadcrumb").html('<a href="#" class="main-page">Clients</a> / ' + clientName);
+
 
     $.ajax({
       url: "controller/Customers.php",
@@ -562,7 +568,7 @@ $(function () {
         // check if is not null client name, then set data to 'customerGrid'
         if (customer.CLIENT) {
           customerGrid += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">';
-          customerGrid += '<div class="customer-grid" data-code="' + customer.CODE_CLT + '">';
+          customerGrid += '<div class="customer-grid" data-code="' + customer.CODE_CLT + '" data-client="' + customer.CLIENT + '">';
           customerGrid += '<div class="customer-details text-center">';
           customerGrid += '<h3 class="fullname"><i class="fa fa-user"></i> ' + customer.CLIENT + '</h3>';
           if (customer.E_MAIL) customerGrid += '<p><i class="fa fa-envelope"></i> ' + customer.E_MAIL + '</p>';
@@ -576,7 +582,7 @@ $(function () {
         }
 
         tbody += '<td>';
-        tbody += ' <span class="btn btn-primary btn-xs btn-edit" data-code="' + customer.CODE_CLT + '"><i class="fa fa-edit"></i></span>';
+        tbody += ' <span class="btn btn-primary btn-xs btn-edit" data-code="' + customer.CODE_CLT + '" data-client="' + customer.CLIENT + '"><i class="fa fa-edit"></i></span>';
         tbody += ' <span class="btn btn-danger btn-xs btn-delete" data-code="' + customer.CODE_CLT + '"><i class="fa fa-remove"></i></span>';
         tbody += '</td></tr>';
       }

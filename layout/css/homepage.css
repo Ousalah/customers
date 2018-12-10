@@ -132,6 +132,10 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.main-header .zones .main-breadcrumb {
+  white-space: nowrap;
+  overflow: hidden;
+}
 .main-header .zones .search-form .search {
   border-width: 0 0 1px;
   box-shadow: none;

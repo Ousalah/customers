@@ -8,14 +8,17 @@ fix form height if has error, problem in tab content position  => DONE
 edit 								=> DONE
 form validation 		=> DONE
 fix grid view ...   => DONE
-translate to fr
-add field title to dataTable header
+breadcrumb 					=> DONE
+
 searching
+check avantage value
+translate to fr
+
+add field title to dataTable header
 fix sorting in dataTable (we have sorting only in the current page)
-breadcrumb
+
 notification msg (success, error, ...) after crud
 fix isExist phone number ( -.)
-check avantage value
 
 
 
