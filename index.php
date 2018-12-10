@@ -8,7 +8,7 @@
   <body>
     <!-- Start Header -->
     <div class="main-nav">
-      <div class="container">Logout</div>
+      <div class="container"></div>
     </div>
     <div class="main-header">
       <div class="container">
@@ -19,12 +19,12 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <form class="zones form-horizontal" action="index.php" method="get">
+            <div class="zones">
               <div class="search-form">
                 <input type="text" class="search form-control" placeholder="Search.." name="s">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <span class="fa fa-search"></span>
               </div>
-            </form>
+            </div>
           </div>
           <div class="col-sm-6">
             <div class="zones">

@@ -29,12 +29,13 @@
         padding-right: 25px;
         padding-left: 0;
       }
-      button[type="submit"] {
+      span {
         background: transparent;
         border: none;
         position: absolute;
         right: 0;
         top: 6px;
+        cursor: pointer;
       }
     }
     .actions {

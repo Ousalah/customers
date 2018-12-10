@@ -106,6 +106,22 @@ $(function () {
   });
   // end
 
+  // start search
+  $(".main-header .zones .search-form .search").on("input", function () {
+    var searchVal = $(this).val();
+    if (searchVal) {
+      $(this).siblings("span").removeClass("fa-search").addClass("fa-remove");
+    } else {
+      $(this).siblings("span").removeClass("fa-remove").addClass("fa-search");
+    }
+    console.log(searchVal);
+  });
+
+  $(".main-header .zones .search-form").on("click", ".fa-remove", function () {
+    $(this).removeClass("fa-remove").addClass("fa-search").siblings(".search").val("");
+  });
+  // end search
+
   // start on btn edit clicked
   $("#table-customers-list tbody, .customers-grid").on("click", "td .btn-edit, .customer-grid", function () {
     var codeClt = $.trim($(this).data("code"));
@@ -185,7 +201,7 @@ $(function () {
     } else if ($action == "edit") {
       var $codeCltVal = $.trim($(".form-add-customers input[name='code_clt']").val());
       conditions = [
-        {key: field, operator: '=', value: value},
+        {key: field, operator: '=', value: value, andOrOperator: 'AND'},
         {key: 'code_clt', operator: '!=', value: $codeCltVal}
       ];
     }

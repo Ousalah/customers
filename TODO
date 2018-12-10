@@ -16,6 +16,7 @@ translate to fr
 
 add field title to dataTable header
 fix sorting in dataTable (we have sorting only in the current page)
+authentication
 
 notification msg (success, error, ...) after crud
 fix isExist phone number ( -.)

@@ -143,12 +143,13 @@ body {
   padding-right: 25px;
   padding-left: 0;
 }
-.main-header .zones .search-form button[type=submit] {
+.main-header .zones .search-form span {
   background: transparent;
   border: none;
   position: absolute;
   right: 0;
   top: 6px;
+  cursor: pointer;
 }
 .main-header .zones .actions .actions-view {
   display: none;
