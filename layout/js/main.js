@@ -1,5 +1,6 @@
 $(function () {
   "use strict";
+  var customersTable = 'CLIENT';
 
   // start switch between list and grid view
   $(".main-header .navigations .view-mode i").on("click", function() {
@@ -42,7 +43,7 @@ $(function () {
       dataType: "json",
       data: {
         a: "nextid",
-        args: { table: "Z_TEST_CLIENT", primaryKey: 'code_clt' },
+        args: { table: customersTable, primaryKey: 'code_clt' },
       },
     })
 
@@ -126,7 +127,7 @@ $(function () {
       data: {
         a: "edit",
         args: {
-          table: "Z_TEST_CLIENT",
+          table: customersTable,
           conditions: [{key: 'code_clt', operator: '=', value: codeClt}],
         },
       },
@@ -200,7 +201,7 @@ $(function () {
         a: "check",
         args: {
           fields: [field],
-          table: "Z_TEST_CLIENT",
+          table: customersTable,
           conditions: conditions,
           checkExist: true,
         },
@@ -421,7 +422,7 @@ $(function () {
       type: "POST",
       data: {
         a: "add",
-        t: "Z_TEST_CLIENT",
+        t: customersTable,
         customerInfo : $(".form-add-customers").serialize()
       },
       beforeSend : function(){
@@ -455,7 +456,7 @@ $(function () {
       type: "POST",
       data: {
         a: "update",
-        t: "Z_TEST_CLIENT",
+        t: customersTable,
         customerInfo : $(".form-add-customers").serialize(),
         codeClt: codeClt
       },
@@ -515,8 +516,8 @@ $(function () {
       dataType: "json",
       data: {
         a: "get",
-        getColumnsArgs: { table: "Z_TEST_CLIENT" },
-        countArgs: { fields: ["count(code_clt)"], table: "Z_TEST_CLIENT" },
+        getColumnsArgs: { table: customersTable },
+        countArgs: { fields: ["count(code_clt)"], table: customersTable },
         page: {currentPage: page, perPage: perPage},
       },
       beforeSend : function(){
@@ -616,7 +617,7 @@ $(function () {
       type: "POST",
       data: {
         a: "delete",
-        t: "Z_TEST_CLIENT",
+        t: customersTable,
         args : {idKey: 'CODE_CLT', idValue: codeClt}
       },
       beforeSend : function(){

@@ -1,3 +1,9 @@
+production to test
+1- .  <=>  168.55 ip
+2- customersTable: "CLIENT"  <=>  "Z_TEST_CLIENT"
+3- customersModel fnc:  "CLIENT" <=>  "Z_TEST_CLIENT"
+
+
 TODO
 pagination   										=> DONE
 DataTable fix overflow (display none to block)  => DONE
