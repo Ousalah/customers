@@ -18,7 +18,7 @@ switch ($a) {
 		// get customers count
 		$count = Customers::get($countArgs, "fetchColumn");
 		// get last page value
-		$lastPage = ceil($count / $page["perPage"]);
+		$lastPage = ceil($count / $page["perPage"]) > 0 ? ceil($count / $page["perPage"]) : 1;
 
 		// start set pagination info (next, prev, current)
 		// validation of currentPage value
@@ -40,12 +40,14 @@ switch ($a) {
 		// assign columnNames and customer data to $data
 		$data["column"] = $columns;
 		// get customers with pagination
-		$data["customer"] = Customers::getPaginatedCustomers($currentPage, $page["perPage"]);
+		$data["customer"] = Customers::getPaginatedCustomers($currentPage, $page["perPage"], $search);
 		// get columns count
+		$min = isset($data["customer"]) && !empty($data["customer"]) ? (min(array_keys($data["customer"])) + 1) : 0;
+		$max = isset($data["customer"]) && !empty($data["customer"]) ? (max(array_keys($data["customer"])) + 1) : 0;
 		$data["pagination"] = array(
 			'count' 	=> $count,
-			'min'   	=> $data["customer"][0]->RowNum,
-			'max'   	=> end($data["customer"])->RowNum,
+			'min'   	=> $min,
+			'max'   	=> $max,
 			'current' => $currentPage,
 			'prev'		=> $prevPage,
 			'next'		=> $nextPage,

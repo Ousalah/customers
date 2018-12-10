@@ -108,17 +108,32 @@ $(function () {
 
   // start search
   $(".main-header .zones .search-form .search").on("input", function () {
-    var searchVal = $(this).val();
+    var searchVal = $.trim($(this).val());
     if (searchVal) {
       $(this).siblings("span").removeClass("fa-search").addClass("fa-remove");
+      // $('#table-customers-list').DataTable().destroy();
+      var search = [
+        {key: '( code_clt', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
+        {key: 'client', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
+        {key: 'e_mail', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
+        {key: 'tel', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
+        {key: 'fax', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
+        {key: 'mobile', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
+        {key: 'codebadge', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: ')'}
+      ]
+      getCustomers(1, 25, search);
     } else {
       $(this).siblings("span").removeClass("fa-remove").addClass("fa-search");
+      // $('#table-customers-list').DataTable().destroy();
+      getCustomers();
     }
     console.log(searchVal);
   });
 
   $(".main-header .zones .search-form").on("click", ".fa-remove", function () {
     $(this).removeClass("fa-remove").addClass("fa-search").siblings(".search").val("");
+    // $('#table-customers-list').DataTable().destroy();
+    getCustomers();
   });
   // end search
 
@@ -506,6 +521,7 @@ $(function () {
   function datatablesInit() {
     $('#table-customers-list').DataTable({
       stateSave: true,
+      retrieve: true,
       responsive: true,
       fixedHeader: true,
       paging: false,
@@ -524,7 +540,7 @@ $(function () {
   // end datatables
 
   // start get customers
-  function getCustomers(page = 1, perPage =  25) {
+  function getCustomers(page = 1, perPage =  25, search = "") {
     $.ajax({
       url: "controller/Customers.php",
       type: "POST",
@@ -532,8 +548,9 @@ $(function () {
       data: {
         a: "get",
         getColumnsArgs: { table: "Z_TEST_CLIENT" },
-        countArgs: { fields: ["count(code_clt)"], table: "Z_TEST_CLIENT" },
+        countArgs: { fields: ["count(code_clt)"], table: "Z_TEST_CLIENT", conditions: search },
         page: {currentPage: page, perPage: perPage},
+        search: search
       },
       beforeSend : function(){
         $('.customers-list').addClass('spinner');
