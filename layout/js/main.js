@@ -112,7 +112,7 @@ $(function () {
     var searchVal = $.trim($(this).val());
     if (searchVal) {
       $(this).siblings("span").removeClass("fa-search").addClass("fa-remove");
-      // $('#table-customers-list').DataTable().destroy();
+      $('#table-customers-list').DataTable().destroy();
       var search = [
         {key: '( code_clt', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
         {key: 'client', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
@@ -125,7 +125,7 @@ $(function () {
       getCustomers(1, 25, search);
     } else {
       $(this).siblings("span").removeClass("fa-remove").addClass("fa-search");
-      // $('#table-customers-list').DataTable().destroy();
+      $('#table-customers-list').DataTable().destroy();
       getCustomers();
     }
     console.log(searchVal);
@@ -133,7 +133,7 @@ $(function () {
 
   $(".main-header .zones .search-form").on("click", ".fa-remove", function () {
     $(this).removeClass("fa-remove").addClass("fa-search").siblings(".search").val("");
-    // $('#table-customers-list').DataTable().destroy();
+    $('#table-customers-list').DataTable().destroy();
     getCustomers();
   });
   // end search
@@ -521,6 +521,7 @@ $(function () {
   // start datatables
   function datatablesInit() {
     $('#table-customers-list').DataTable({
+      destroy: true,
       stateSave: true,
       retrieve: true,
       responsive: true,

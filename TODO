@@ -17,11 +17,16 @@ fix grid view ...   => DONE
 breadcrumb 					=> DONE
 searching 					=> DONE
 add field title to dataTable header  => DONE
+dataTable init problem after (search, ...)  => DONE
 
 keep seach result on pagination
 check avantage value
 translate to fr
-dataTable init problem after (search, ...)
+ask before delete
+pagination on order desc
+on retry error hide table and grid
+datatable same time give error of init on search, edit, ...
+
 
 fix sorting in dataTable (we have sorting only in the current page)
 authentication
