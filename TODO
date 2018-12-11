@@ -28,16 +28,16 @@ fix pagination on current result (it keep the value of the last search)  		=> DO
 check avantage value  																											=> DONE
 
 
-ask before delete  																													=>
-pagination on order desc 																										=>
-on retry error hide table and grid 																					=>
-datatable same time give error of init on search, edit, ... 								=>
-fix sorting in dataTable (we have sorting only in the current page) 				=>
+ask before delete  																													=> .
+pagination on order desc 																										=> .
+on retry error hide table and grid 																					=> .
+datatable same time give error of init on search, edit, ... 								=> .
+fix sorting in dataTable (we have sorting only in the current page) 				=> .
 
-authentication 																															=>
-fix grid view if info empty show other one else hide it  (trim) 						=>
-notification msg (success, error, ...) after crud 													=>
-fix isExist phone number ( -.) 																							=>
+authentication 																															=> .
+fix grid view if info empty show other one else hide it  (trim) 						=> .
+notification msg (success, error, ...) after crud 													=> .
+fix isExist phone number ( -.) 																							=> .
 
 
 
