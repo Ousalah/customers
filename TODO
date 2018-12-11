@@ -8,37 +8,36 @@ Equivalent of LIMIT and OFFSET for SQL Server?
 https://stackoverflow.com/questions/2135418/equivalent-of-limit-and-offset-for-sql-server
 
 TODO
-pagination   										=> DONE
-DataTable fix overflow (display none to block)  => DONE
-dataTable fix loading (spinner class) on pagination  => DONE
-block click on pagination buttons if it has the limit value [first, last]  => DONE
-fix go to page input event and validation (allow only int value)  => DONE
-fix form height if has error, problem in tab content position  => DONE
-edit 								=> DONE
-form validation 		=> DONE
-fix grid view ...   => DONE
-breadcrumb 					=> DONE
-searching 					=> DONE
-add field title to dataTable header  => DONE
-dataTable init problem after (search, ...)  => DONE
-keep seach result on pagination    => DONE
-translate to fr     => DONE
-delete btn on edit not work  => DONE
-fix pagination on current result (it keep the value of the last search)  => DONE
+pagination   																																=> DONE
+DataTable fix overflow (display none to block)  														=> DONE
+dataTable fix loading (spinner class) on pagination  												=> DONE
+block click on pagination buttons if it has the limit value [first, last]  	=> DONE
+fix go to page input event and validation (allow only int value)  					=> DONE
+fix form height if has error, problem in tab content position  							=> DONE
+edit 																																				=> DONE
+form validation 																														=> DONE
+fix grid view ...   																												=> DONE
+breadcrumb 																																	=> DONE
+searching 																																	=> DONE
+add field title to dataTable header  																				=> DONE
+dataTable init problem after (search, ...)  																=> DONE
+keep seach result on pagination    																					=> DONE
+translate to fr     																												=> DONE
+delete btn on edit not work  																								=> DONE
+fix pagination on current result (it keep the value of the last search)  		=> DONE
+check avantage value  																											=> DONE
 
 
-check avantage value
-ask before delete
-pagination on order desc
-on retry error hide table and grid
-datatable same time give error of init on search, edit, ...
+ask before delete  																													=>
+pagination on order desc 																										=>
+on retry error hide table and grid 																					=>
+datatable same time give error of init on search, edit, ... 								=>
+fix sorting in dataTable (we have sorting only in the current page) 				=>
 
-
-fix sorting in dataTable (we have sorting only in the current page)
-authentication
-
-notification msg (success, error, ...) after crud
-fix isExist phone number ( -.)
+authentication 																															=>
+fix grid view if info empty show other one else hide it  (trim) 						=>
+notification msg (success, error, ...) after crud 													=>
+fix isExist phone number ( -.) 																							=>
 
 
 

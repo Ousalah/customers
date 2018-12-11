@@ -192,7 +192,7 @@
                   </div>
                   <div class="radio">
                     <label for="avantage-1">
-                      <input type="radio" name="avantage" id="avantage-1" value="2">
+                      <input type="radio" name="avantage" id="avantage-1" value="3">
                       Client fidéle et peut avoir crédit
                     </label>
                   </div>
