@@ -1,6 +1,6 @@
 $(function () {
   "use strict";
-  var customerTable = "Z_TEST_CLIENT";
+  var customerTable = "CLIENT";
 
   // start switch between list and grid view
   $(".main-header .navigations .view-mode i").on("click", function() {
