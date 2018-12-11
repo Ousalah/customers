@@ -18,6 +18,7 @@ breadcrumb 					=> DONE
 searching 					=> DONE
 add field title to dataTable header  => DONE
 
+keep seach result on pagination
 check avantage value
 translate to fr
 dataTable init problem after (search, ...)

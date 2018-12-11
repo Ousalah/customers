@@ -42,8 +42,11 @@ switch ($a) {
 		// get customers with pagination
 		$data["customer"] = Customers::getPaginatedCustomers($currentPage, $page["perPage"], $search);
 		// get columns count
-		$min = isset($data["customer"]) && !empty($data["customer"]) ? (min(array_keys($data["customer"])) + 1) : 0;
-		$max = isset($data["customer"]) && !empty($data["customer"]) ? (max(array_keys($data["customer"])) + 1) : 0;
+		$min = ($page["perPage"] * ($currentPage-1)) + 1;
+		$min = $count > 0 ? $min : 0;
+		$max = $page["perPage"] * $currentPage;
+		$max = $max > $count ? $count : $max;
+
 		$data["pagination"] = array(
 			'count' 	=> $count,
 			'min'   	=> $min,

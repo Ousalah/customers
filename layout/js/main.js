@@ -550,7 +550,7 @@ $(function () {
         { targets: 22, title: 'Avantage' },
         { targets: 27, title: 'GSM' },
       ],
-      aaSorting: [0,'desc']
+      aaSorting: [0,'asc']
     });
   }
   // end datatables
