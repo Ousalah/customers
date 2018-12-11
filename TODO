@@ -23,7 +23,10 @@ add field title to dataTable header  => DONE
 dataTable init problem after (search, ...)  => DONE
 keep seach result on pagination    => DONE
 translate to fr     => DONE
+delete btn on edit not work  => DONE
 
+
+fix pagination on current result (it keep the value of the last search)
 check avantage value
 ask before delete
 pagination on order desc

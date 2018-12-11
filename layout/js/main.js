@@ -691,8 +691,13 @@ $(function () {
   // end delete customer function
 
   // start on btn delete clicked
+  // in table
   $("#table-customers-list tbody").on("click", "td .btn-delete", function () {
     deleteCustomer($(this).data("code"));
+  });
+  // in edit view
+  $(".main-header .zones .actions .edit-view .btn-delete").on("click", function () {
+    deleteCustomer($(".form-add-customers input[name='code_clt']").val());
   });
   // end on btn delete clicked
 
