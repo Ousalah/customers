@@ -130,6 +130,7 @@ $(function () {
       $(this).siblings("span").removeClass("fa-remove").addClass("fa-search");
       $('#table-customers-list').DataTable().destroy();
       getCustomers();
+      search = "";
     }
     console.log(searchVal);
   });
@@ -138,6 +139,7 @@ $(function () {
     $(this).removeClass("fa-remove").addClass("fa-search").siblings(".search").val("");
     $('#table-customers-list').DataTable().destroy();
     getCustomers();
+    search = "";
   });
   // end search
 
