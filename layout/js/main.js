@@ -108,12 +108,15 @@ $(function () {
   // end
 
   // start search
+  // declare searchVal and search as global to use it in pagination buttons
+  var searchVal = "";
+  var search = "";
   $(".main-header .zones .search-form .search").on("input", function () {
-    var searchVal = $.trim($(this).val());
+    searchVal = $.trim($(this).val());
     if (searchVal) {
       $(this).siblings("span").removeClass("fa-search").addClass("fa-remove");
       $('#table-customers-list').DataTable().destroy();
-      var search = [
+      search = [
         {key: '( code_clt', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
         {key: 'client', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
         {key: 'e_mail', operator: 'LIKE', value: '%' + searchVal + '%', andOrOperator: 'OR'},
@@ -697,14 +700,14 @@ $(function () {
   $(".paginations").on("click", function () {
     if (! $(this).hasClass("btn-prevent-click")) {
       $('#table-customers-list').DataTable().destroy();
-      getCustomers($(this).attr("data-page"));
+      getCustomers($(this).attr("data-page"), 25, search);
     }
   });
 
   // go to page
   $(".pagination-current").on("change", function () {
     $('#table-customers-list').DataTable().destroy();
-    getCustomers($(this).val());
+    getCustomers($(this).val(), 25, search);
   });
 
 

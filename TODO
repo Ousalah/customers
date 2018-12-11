@@ -4,6 +4,9 @@ production to test
 3- customersModel fnc:  "CLIENT" <=>  "Z_TEST_CLIENT"
 
 
+Equivalent of LIMIT and OFFSET for SQL Server?
+https://stackoverflow.com/questions/2135418/equivalent-of-limit-and-offset-for-sql-server
+
 TODO
 pagination   										=> DONE
 DataTable fix overflow (display none to block)  => DONE
@@ -18,8 +21,8 @@ breadcrumb 					=> DONE
 searching 					=> DONE
 add field title to dataTable header  => DONE
 dataTable init problem after (search, ...)  => DONE
+keep seach result on pagination    => DONE
 
-keep seach result on pagination
 check avantage value
 translate to fr
 ask before delete

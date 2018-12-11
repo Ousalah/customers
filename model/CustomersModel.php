@@ -51,7 +51,7 @@ class Customers extends Utils {
     $keys   = array();
     $values = array();
     if (!empty($search)) {
-      $where = "AND";
+      $where = "WHERE";
       // if single condition [ex 2]
       if (isset($search["key"]) && isset($search["value"])) {
         $search["operator"] = (isset($search["operator"]) && !empty($search["operator"])) ? $search["operator"] : "=";
@@ -76,8 +76,8 @@ class Customers extends Utils {
     // End where part (search)
 
     $stmt = $cnx->prepare("SELECT TOP $perPage * FROM (SELECT ROW_NUMBER() OVER (ORDER BY code_clt) AS RowNum, *
-            FROM Z_TEST_CLIENT) AS RowConstrainedResult
-            WHERE RowNum > ($perPage * ($pageNumber - 1)) {$where} ORDER BY code_clt ASC");
+            FROM Z_TEST_CLIENT {$where}) AS RowConstrainedResult
+            WHERE RowNum > ($perPage * ($pageNumber - 1)) ORDER BY code_clt ASC");
     $stmt->execute($values);
     return $stmt->fetchAll();
   }
