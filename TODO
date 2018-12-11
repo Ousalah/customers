@@ -22,9 +22,9 @@ searching 					=> DONE
 add field title to dataTable header  => DONE
 dataTable init problem after (search, ...)  => DONE
 keep seach result on pagination    => DONE
+translate to fr     => DONE
 
 check avantage value
-translate to fr
 ask before delete
 pagination on order desc
 on retry error hide table and grid

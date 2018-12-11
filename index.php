@@ -21,7 +21,7 @@
           <div class="col-sm-6">
             <div class="zones">
               <div class="search-form">
-                <input type="text" class="search form-control" placeholder="Search.." name="s">
+                <input type="text" class="search form-control" placeholder="Rechercher...">
                 <span class="fa fa-search"></span>
               </div>
             </div>
@@ -30,17 +30,17 @@
             <div class="zones">
               <div class="actions">
                 <div class="actions-view main-view">
-                  <button class="btn btn-success btn-create">Create</button>
+                  <button class="btn btn-success btn-create">Créer</button>
                   <!-- <button class="btn btn-transparent btn-transparent-success btn-import">Import</button> -->
                 </div>
                 <div class="actions-view add-view">
-                  <button class="btn btn-success btn-save">Save</button>
-                  <button class="btn btn-transparent btn-transparent-success btn-discard">Discard</button>
+                  <button class="btn btn-success btn-save">Sauvegarder</button>
+                  <button class="btn btn-transparent btn-transparent-success btn-discard">Annuler</button>
                 </div>
                 <div class="actions-view edit-view">
                   <button class="btn btn-success btn-update">Modifier</button>
-                  <button class="btn btn-danger btn-delete">Delete</button>
-                  <button class="btn btn-transparent btn-transparent-success btn-discard">Discard</button>
+                  <button class="btn btn-danger btn-delete">Supprimer</button>
+                  <button class="btn btn-transparent btn-transparent-success btn-discard">Annuler</button>
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@
             <div class="col-md-6">
               <div class="left-form">
                 <div class="form-group has-feedback">
-                  <label class="col-xs-2 control-label">Ref</label>
+                  <label class="col-xs-2 control-label">Code</label>
                   <div class="col-xs-4">
                     <input type="text" class="form-control" name="code_clt" value="" data-title="Code de client" placeholder="0123456" readonly>
                     <p class="help-block"></p>
@@ -93,7 +93,7 @@
                 <div class="form-group has-feedback">
                   <label for="client" class="col-xs-2 control-label">Client</label>
                   <div class="col-xs-9">
-                    <input type="text" class="form-control" id="client" value="" name="client" data-title="Nom de client" placeholder="Client Name">
+                    <input type="text" class="form-control" id="client" value="" name="client" data-title="Nom de client" placeholder="Nom de client">
                     <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
@@ -101,7 +101,7 @@
                 <div class="form-group has-feedback">
                   <label for="e_mail" class="col-xs-2 control-label">Email</label>
                   <div class="col-xs-9">
-                    <input type="text" class="form-control" id="e_mail" value="" name="e_mail" data-title="Email" placeholder="name@mail.com">
+                    <input type="text" class="form-control" id="e_mail" value="" name="e_mail" data-title="Email" placeholder="personne@exemple.com">
                     <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
@@ -124,7 +124,7 @@
                 <div class="form-group has-feedback">
                   <label for="fax" class="col-xs-2 control-label">Fax</label>
                   <div class="col-xs-9">
-                    <input type="tel" class="form-control" id="fax" value="" name="fax" data-title="Fax" placeholder="0522000000">
+                    <input type="tel" class="form-control" id="fax" value="" name="fax" data-title="Fax" placeholder="0522123456">
                     <p class="help-block"></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                   </div>
@@ -210,10 +210,10 @@
             <!-- start shipping address  -->
             <div class="tab-pane" id="address-livraison" role="tabpanel">
               <div class="form-group">
-                <label for="adresse1liv" class="col-xs-2 control-label">Address Livraison</label>
+                <label for="adresse1liv" class="col-xs-2 control-label">Adresse Livraison</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" id="adresse1liv" name="adresse1liv" placeholder="Address Livraison 1">
-                  <input type="text" class="form-control" name="adresse2liv" placeholder="Address Livraison 2">
+                  <input type="text" class="form-control" id="adresse1liv" name="adresse1liv" placeholder="Adresse Livraison 1">
+                  <input type="text" class="form-control" name="adresse2liv" placeholder="Adresse Livraison 2">
                 </div>
               </div>
               <div class="form-group">
@@ -230,10 +230,10 @@
             <!-- start billing address  -->
             <div class="tab-pane" id="address-facturation" role="tabpanel">
               <div class="form-group">
-                <label for="adresse1fact" class="col-xs-2 control-label">Address Facturation</label>
+                <label for="adresse1fact" class="col-xs-2 control-label">Adresse Facturation</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" id="adresse1fact" name="adresse1fact" placeholder="Address Facturation 1">
-                  <input type="text" class="form-control" name="adresse2fact" placeholder="Address Facturation 2">
+                  <input type="text" class="form-control" id="adresse1fact" name="adresse1fact" placeholder="Adresse Facturation 1">
+                  <input type="text" class="form-control" name="adresse2fact" placeholder="Adresse Facturation 2">
                 </div>
               </div>
               <div class="form-group">
@@ -259,7 +259,7 @@
       <!-- start retry button -->
       <div class="retry-btn">
         <div class="container">
-          <button class="btn btn-dark btn-sm">retry</button>
+          <button class="btn btn-dark btn-sm">réessayez</button>
         </div>
       </div>
       <!-- end retry button -->
@@ -272,7 +272,7 @@
       <div class="container">
         <!-- start retry button -->
         <div class="retry-btn">
-          <button class="btn btn-dark btn-sm">retry</button>
+          <button class="btn btn-dark btn-sm">réessayez</button>
         </div>
         <!-- end retry button -->
         <div class="row">
